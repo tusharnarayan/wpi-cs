@@ -1,0 +1,149 @@
+\section{cptest1.c File Reference}
+\label{cptest1_8c}\index{cptest1.c@{cptest1.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$dirent.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{\_\-GNU\_\-SOURCE}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \bf{copyfile1} (char $\ast$infilename, char $\ast$outfilename)
+\item 
+int \bf{copyfile2} (char $\ast$infilename, char $\ast$outfilename)
+\item 
+int \bf{copyfile3} (char $\ast$infilename, char $\ast$outfilename, int bsize)
+\item 
+int \bf{copier} (char $\ast$infilename, char $\ast$outfilename, int option, int buffer\_\-size)
+\item 
+void \bf{usage} (char $\ast$program\_\-name)
+\item 
+void \bf{open\_\-file\_\-error} (char $\ast$filename)
+\item 
+void \bf{result\_\-message} (int returnstatus, int option)
+\item 
+timeval \bf{copyduration} (struct timeval start\_\-time, struct timeval end\_\-time)
+\item 
+int \bf{main} (int argc, char $\ast$argv[$\,$])
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{cptest1.c@{cptest1.c}!_GNU_SOURCE@{\_\-GNU\_\-SOURCE}}
+\index{_GNU_SOURCE@{\_\-GNU\_\-SOURCE}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-GNU\_\-SOURCE}\label{cptest1_8c_53abf256730d533302d1910e5fb61efe}
+
+
+
+
+\subsection{Function Documentation}
+\index{cptest1.c@{cptest1.c}!copier@{copier}}
+\index{copier@{copier}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int copier (char $\ast$ {\em infilename}, char $\ast$ {\em outfilename}, int {\em option}, int {\em buffer\_\-size})}\label{cptest1_8c_8f6e8abca160301ac05384cd50fd1651}
+
+
+Determines which copy function should be called, calls it with parameters, prints timestamps just before and after copying. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em infilename}]the file that has to be copied \item[{\em outfilename}]the file to be copied to \item[{\em option}]the copying function choice to use \item[{\em buffer\_\-size}]the size of buffer to be used for copyfile3 \end{description}
+\end{Desc}
+\index{cptest1.c@{cptest1.c}!copyduration@{copyduration}}
+\index{copyduration@{copyduration}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct timeval copyduration (struct timeval {\em start\_\-time}, struct timeval {\em end\_\-time})}\label{cptest1_8c_6983c07625f59199b36b6933782a4cf7}
+
+
+Returns the difference between the timestamps obtained just before and just after the call to the copying function The second parameter has to be a time later than the other. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start\_\-time}]timestamp just before the copying function was called \item[{\em end\_\-time}]timestamp just after the copying function returns \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]timeval struct which represents the difference of input structs, or NULL struct in case of error \end{Desc}
+\index{cptest1.c@{cptest1.c}!copyfile1@{copyfile1}}
+\index{copyfile1@{copyfile1}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int copyfile1 (char $\ast$ {\em infilename}, char $\ast$ {\em outfilename})}\label{cptest1_8c_97d29821b578fd3c9ea2482e77bebfc5}
+
+
+Copies one file to another using formatted I/O, one character at a time. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em infilename}]Name of input file \item[{\em outfilename}]Name of output file \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if successful, 1 if error. \end{Desc}
+\index{cptest1.c@{cptest1.c}!copyfile2@{copyfile2}}
+\index{copyfile2@{copyfile2}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int copyfile2 (char $\ast$ {\em infilename}, char $\ast$ {\em outfilename})}\label{cptest1_8c_88b74a1f2a04a2c3e85579164ce6f232}
+
+
+Copies one file to another using unformatted I/O, one character at a time. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em infilename}]Name of input file \item[{\em outfilename}]Name of output file \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if successful, 1 if error. \end{Desc}
+\index{cptest1.c@{cptest1.c}!copyfile3@{copyfile3}}
+\index{copyfile3@{copyfile3}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int copyfile3 (char $\ast$ {\em infilename}, char $\ast$ {\em outfilename}, int {\em bsize})}\label{cptest1_8c_f2643a5d96c55625c22762e806920280}
+
+
+Copies one file to another using unformatted I/O, using buffer sizes. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em infilename}]Name of input file \item[{\em outfilename}]Name of output file \item[{\em bsize}]Size of the buffer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if successful, 1 if error. \end{Desc}
+\index{cptest1.c@{cptest1.c}!main@{main}}
+\index{main@{main}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, char $\ast$ {\em argv}[$\,$])}\label{cptest1_8c_28052c36c3b61c6c0eaa18f5d226118f}
+
+
+Main program: copies a file. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argc}]Number of command-line arguments (including program name). \item[{\em argv}]Array of pointers to character arays holding arguments. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if successful, 1 if fail in copying, -2 if fail in timestamps, -1 if invalid command line arguments, or number of copy functions that failed, -3 if multiple input files but 1 output file instead of a directory \end{Desc}
+\index{cptest1.c@{cptest1.c}!open_file_error@{open\_\-file\_\-error}}
+\index{open_file_error@{open\_\-file\_\-error}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void open\_\-file\_\-error (char $\ast$ {\em filename})}\label{cptest1_8c_24e89f857b6c4f8cfadd8bf854978b28}
+
+
+Prints file opening error message \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]the name of the file that could not be opened \end{description}
+\end{Desc}
+\index{cptest1.c@{cptest1.c}!result_message@{result\_\-message}}
+\index{result_message@{result\_\-message}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void result\_\-message (int {\em returnstatus}, int {\em option})}\label{cptest1_8c_772406db6caedde5006575a15b4b3e7b}
+
+
+Prints appropriate message depending on if the main program was successful \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em returnstatus}]return value of the main program \item[{\em option}]number of the function that was used to copy files \end{description}
+\end{Desc}
+\index{cptest1.c@{cptest1.c}!usage@{usage}}
+\index{usage@{usage}!cptest1.c@{cptest1.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void usage (char $\ast$ {\em program\_\-name})}\label{cptest1_8c_be689503cb8eba508fa6380f8d476088}
+
+
+Prints usage instructions. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em program\_\-name}]the name of this program \end{description}
+\end{Desc}
