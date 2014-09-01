@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<man_page>
+	<command>
+		<dname>chown</dname>
+		<name>
+			chown - change file owner and group
+		</name>
+		<topic>System Calls</topic>
+		<synopsis>
+			chown [OPTION]... [OWNER][:[GROUP]] FILE...
+			chown [OPTION]... --reference=RFILE FILE...
+		</synopsis>
+		<description>
+			This  manual  page  documents  the  GNU version of chown.
+      			chown changes the user and/or  group  ownership  of  each
+       			given  file.   If  only  an owner (a user name or numeric
+       			user ID) is given, that user is made the  owner  of  each
+       			given  file, and the files' group is not changed.  If the
+       			owner is followed by a colon and a group name (or numeric
+       			group  ID), with no spaces between them, the group owner-
+       			ship of the files is changed as well.  If a colon but  no
+       			group  name  follows the user name, that user is made the
+       			owner of the files and the group of the files is  changed
+       			to  that  user's login group.  If the colon and group are
+       			given, but the owner is omitted, only the  group  of  the
+       			files  is  changed; in this case, chown performs the same
+       			function as chgrp.  If only a colon is given, or  if  the
+       			entire  operand is empty, neither the owner nor the group
+       			is changed.			
+		</description>
+	</command>
+	<command>
+		<dname>chdir</dname>
+		<name>
+			chdir, fchdir - change working directory
+		</name>
+		<topic>General Commands</topic>
+		<synopsis>
+			#include <unistd.h>
+
+			int chdir(const char *path);
+       			int fchdir(int fd);
+		</synopsis>
+		<description>
+			chdir()  changes  the  current  working directory to that 
+			specified in path.
+
+		       fchdir() is identical to chdir(); the only difference  is
+       			that the directory is given as an open file descriptor.
+		</description
+	</command>
+	<command>
+		<dname>poweroff</dname>
+		<name>
+			halt, reboot, poweroff - stop the system.
+		</name>
+		<topic>Maintenance Commands</topic>
+		<synopsis>
+			/sbin/halt [-n] [-w] [-d] [-f] [-i] [-p] [-h]
+       			/sbin/reboot [-n] [-w] [-d] [-f] [-i]
+       			/sbin/poweroff [-n] [-w] [-d] [-f] [-i] [-h]
+		</synopsis>
+		<description>
+			Halt  notes  that the system is being brought down in the
+      			file /var/log/wtmp, and then either tells the  kernel  to
+       			halt, reboot or poweroff the system.
+
+			If  halt  or  reboot  is called when the system is not in
+			runlevel 0 or 6, in other words when  it's  running  nor-
+       			mally,  shutdown  will be invoked instead (with the -h or
+       			-r flag). For more info see the shutdown(8) manpage.
+
+			The rest of this manpage describes the behaviour in  run-
+       			levels 0 and 6, that is when the systems shutdown scripts
+       			are being run.
+		</description>
+	</command>
+	<command>
+		<dname>elf</dname>
+		<name>
+			elf - format of Executable and Linking Format (ELF) files
+		</name>
+		<topic>File Formats</topic>
+		<synopsis>
+			 #include <elf.h>
+		</synopsis>
+		<description>
+			The header file <elf.h> defines the format of ELF exe-
+			cutable binary files.  Amongst these files are normal exe-
+     			cutable files, relocatable object files, core files and
+     			shared libraries.
+
+			An executable file using the ELF file format consists of an
+     			ELF header, followed by a program header table or a section
+     			header table, or both.  The ELF header is always at offset
+     			zero of the file.  The program header table and the section
+     			header table's offset in the file are defined in the ELF
+     			header.  The two tables describe the rest of the particu-
+     			larities of the file.
+
+			This header file describes the above mentioned headers as C
+     			structures and also includes structures for dynamic sec-
+     			tions, relocation sections and symbol tables.
+		</description>
+	</command>
+	<command>
+		<dname>nano</dname>
+		<name>
+			nano - Nano's ANOther editor, an enhanced free Pico clone
+		</name>
+		<topic>General Commands</topic>
+		<synopsis>
+			nano [OPTIONS] [[+LINE[,COLUMN]] FILE]... 
+		</synopsis>
+		<description>
+			This manual page briefly documents the nano command.
+
+			nano is a small, free and friendly editor which  aims  to
+			replace Pico, the default editor included in the non-free
+			Pine package.  Rather than just copying Pico's  look  and
+       			feel,  nano  also implements some missing (or disabled by
+       			default) features in Pico, such as "search  and  replace"
+       			and "go to line number".
+		</description>
+	</command>
+	<command>
+		<dname>truncate</dname>
+		<name>
+			truncate,  ftruncate  -  truncate  a  file to a specified
+			length
+		</name>
+		<topic>System Calls</topic>
+		<synopsis>
+			#include <unistd.h>
+    			#include <sys/types.h>
+
+       			int truncate(const char *path, off_t length);
+       			int ftruncate(int fd, off_t length);
+		</synopsis>
+		<description>
+			The truncate() and ftruncate() functions cause the  regu-
+       			lar  file  named  by path or referenced by fd to be trun-
+       			cated to a size of precisely length bytes.
+
+       			If the file previously was larger  than  this  size,  the
+       			extra  data is lost.  If the file previously was shorter,
+       			it is extended, and the extended part reads as null bytes
+       			('\0').
+
+       			The file offset is not changed.
+
+       			If  the  size  changed,  then  the  st_ctime and st_mtime
+       			fields (respectively, time of last status change and time
+       			of  last  modification;  see  stat(2))  for  the file are
+       			updated, and the set-user-ID and set-group-ID  permission
+       			bits may be cleared.
+
+       			With ftruncate(), the file must be open for writing; with
+       			truncate(), the file must be writable.
+		</description>
+	</command>
+</man_page>
