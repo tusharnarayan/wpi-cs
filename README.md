@@ -1,4 +1,4 @@
-cs2303
+wpi-cs
 ======
 
-Systems Programming Concepts
+cs2303 Systems Programming Concepts
