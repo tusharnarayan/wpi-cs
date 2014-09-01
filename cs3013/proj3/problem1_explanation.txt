@@ -1,0 +1,10 @@
+Problem 1: Ninjas Vs. Pirates
+Tushar Narayan: tnarayan
+Cynthia Rogers: cerogers
+
+This solution avoid deproving one side of the costume department because
+whichever thread the turnstile deides to signal next will lock the costume
+department ensuring that ninjas and pirates can both intermitantly use the
+changing room one after the other as turn stile wishes (ie: this means pirates
+can't pull other pirates that are waiting in, it's random whicheer turnstile
+happens to choose). 

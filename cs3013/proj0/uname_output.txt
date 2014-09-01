@@ -1,0 +1,6 @@
+#Tushar Narayan
+#tnarayan@wpi.edu
+
+#output of the uname -a shell command
+
+Linux linux-zudt 2.6.37.6-CS3013_C12-tnarayan #1 SMP Sat Aug 25 20:18:28 EDT 2012 i686 i686 i386 GNU/Linux

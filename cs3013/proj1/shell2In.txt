@@ -1,0 +1,18 @@
+jobs
+grep std runCommand.c
+ls /home/
+pwd
+s
+cd ..
+pwd
+ls &
+jobs
+cd /home/cerogers/kernelDst
+pwd
+make -j4 O=~/kernelDst > ~/make-output.txt 2> ~/make-err.txt &
+jobs
+starpower!
+pwd -starpower!
+jobs
+ls -l
+exit

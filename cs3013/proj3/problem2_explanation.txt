@@ -1,0 +1,26 @@
+Problem 2: Traffic Problem
+Tushar Narayan: tnarayan
+Cynthia Rogers: cerogers
+
+Phase 1:
+This intersection is controlled with a turnstile (if we were using semaphores)
+and a Fifo queue (linked list with pointer to the head) if we're using
+mutexes. This method is sub-optimal in that if two different cars COULD go w/o
+hitting eachother (not in the same turnpath) then they won't because there's
+only one queue for the whole intersection and they're too nice. They end up
+waiting a long time for their turn, causing major traffic, but eventually
+turning. 
+
+Phase 2:
+Massachussets drivers will produce a deadlock if the car that's running
+doesn't take all the quadrants he needs to run at once (atomically). This
+allows for the situation in which 4 cars each take a quadrant and need another
+but have to wait for it.
+
+Our solution completley ignores quadrants. Instead we focus on which turn
+pairs can go together, and have them run together. the car thats running locks
+the turners that can't run at the same time as it, allowing the ones who can
+run at the same time as it to run as they please until the car is out of the
+intersection eventually when the cars clear the intersection, the first one to
+grab the intesection will be the one to run in it.
+

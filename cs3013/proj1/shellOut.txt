@@ -1,0 +1,599 @@
+cerogers@linux-zudt:~> ./shell < shellIn.txt
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+Wall clock time for the command to execute:
+9 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+250
+cerogers  lost+found  src  student
+
+Wall clock time for the command to execute:
+11 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+10 millisecconds
+
+Number of times the process was preempted involuntarily:
+3
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+297
+/home/cerogers
+
+Wall clock time for the command to execute:
+53 milliseconds
+
+User CPU time:
+10 millisecconds
+
+System CPU time:
+40 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+202
+Your command didn't work: No such file or directory
+
+Only 32 arguments allowed.
+grep: shell.c: No such file or directory
+
+Wall clock time for the command to execute:
+13 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+10 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+261
+/home
+
+Wall clock time for the command to execute:
+4 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+0
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+189
+cerogers  lost+found  src  student
+
+Wall clock time for the command to execute:
+7 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+284
+/home/cerogers/kernelDst
+
+Wall clock time for the command to execute:
+4 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+0
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+189
+Your command didn't work: No such file or directory
+pwd: invalid option -- 's'
+Try `pwd --help' for more information.
+
+Wall clock time for the command to execute:
+5 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+2
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+201
+total 242908
+drwxr-xr-x  4 cerogers users      4096 Aug 25 20:13 arch
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:58 block
+-rw-r--r--  1 cerogers users         2 Aug 25 19:41 config 0
+drwxr-xr-x  3 cerogers users     20480 Aug 25 20:16 crypto
+drwxr-xr-x 50 cerogers users      4096 Aug 25 20:12 drivers
+drwxr-xr-x 10 cerogers users      4096 Aug 25 20:16 firmware
+drwxr-xr-x 37 cerogers users      4096 Aug 25 20:16 fs
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:54 include
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:13 init
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:57 ipc
+drwxr-xr-x  6 cerogers users     12288 Aug 25 20:16 kernel
+drwxr-xr-x  5 cerogers users     12288 Aug 25 20:16 lib
+-rw-r--r--  1 cerogers users       521 Sep  3 22:08 Makefile
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:56 mm
+-rw-r--r--  1 cerogers users      2296 Aug 25 19:54 modules.builtin
+-rw-r--r--  1 cerogers users     28681 Sep  3 22:08 modules.order
+-rw-r--r--  1 cerogers users    384303 Aug 25 20:14 Module.symvers
+drwxr-xr-x 31 cerogers users      4096 Aug 25 20:10 net
+drwxr-xr-x  7 cerogers users      4096 Aug 25 19:54 scripts
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:57 security
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:00 sound
+lrwxrwxrwx  1 cerogers users        24 Sep  3 22:08 source -> /home/cerogers/kernelSrc
+-rw-r--r--  1 cerogers users   1280394 Aug 25 20:13 System.map
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:54 usr
+-rwxr-xr-x  1 cerogers users 111245610 Aug 25 20:13 vmlinux
+-rw-r--r--  1 cerogers users 135668097 Aug 25 20:13 vmlinux.o
+
+Wall clock time for the command to execute:
+40 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+9
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+333
+
+Wall clock time for the command to execute:
+47 milliseconds
+
+User CPU time:
+30 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+12
+
+Number of times the process gave up the CPU voluntarily:
+7
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+617
+pwd: invalid option -- 's'
+Try `pwd --help' for more information.
+
+Wall clock time for the command to execute:
+7 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+201
+total 242908
+drwxr-xr-x  4 cerogers users      4096 Aug 25 20:13 arch
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:58 block
+-rw-r--r--  1 cerogers users         2 Aug 25 19:41 config 0
+drwxr-xr-x  3 cerogers users     20480 Aug 25 20:16 crypto
+drwxr-xr-x 50 cerogers users      4096 Aug 25 20:12 drivers
+drwxr-xr-x 10 cerogers users      4096 Aug 25 20:16 firmware
+drwxr-xr-x 37 cerogers users      4096 Aug 25 20:16 fs
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:54 include
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:13 init
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:57 ipc
+drwxr-xr-x  6 cerogers users     12288 Aug 25 20:16 kernel
+drwxr-xr-x  5 cerogers users     12288 Aug 25 20:16 lib
+-rw-r--r--  1 cerogers users       521 Sep  3 22:08 Makefile
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:56 mm
+-rw-r--r--  1 cerogers users      2296 Aug 25 19:54 modules.builtin
+-rw-r--r--  1 cerogers users     28681 Sep  3 22:08 modules.order
+-rw-r--r--  1 cerogers users    384303 Aug 25 20:14 Module.symvers
+drwxr-xr-x 31 cerogers users      4096 Aug 25 20:10 net
+drwxr-xr-x  7 cerogers users      4096 Aug 25 19:54 scripts
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:57 security
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:00 sound
+lrwxrwxrwx  1 cerogers users        24 Sep  3 22:08 source -> /home/cerogers/kernelSrc
+-rw-r--r--  1 cerogers users   1280394 Aug 25 20:13 System.map
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:54 usr
+-rwxr-xr-x  1 cerogers users 111245610 Aug 25 20:13 vmlinux
+-rw-r--r--  1 cerogers users 135668097 Aug 25 20:13 vmlinux.o
+
+Wall clock time for the command to execute:
+14 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+10 millisecconds
+
+Number of times the process was preempted involuntarily:
+9
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+334
+
+Wall clock time for the command to execute:
+104 milliseconds
+
+User CPU time:
+30 millisecconds
+
+System CPU time:
+20 millisecconds
+
+Number of times the process was preempted involuntarily:
+24
+
+Number of times the process gave up the CPU voluntarily:
+22
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+2205
+
+Only 32 arguments allowed.
+grep: shell.c: No such file or directory
+
+Wall clock time for the command to execute:
+7 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+273
+/home
+
+Wall clock time for the command to execute:
+13 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+10 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+201
+cerogers  lost+found  src  student
+
+Wall clock time for the command to execute:
+7 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+0
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+296
+/home/cerogers/kernelDst
+
+Wall clock time for the command to execute:
+4 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+0
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+201
+Your command didn't work: No such file or directory
+pwd: invalid option -- 's'
+Try `pwd --help' for more information.
+
+Wall clock time for the command to execute:
+5 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+1
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+201
+total 242908
+drwxr-xr-x  4 cerogers users      4096 Aug 25 20:13 arch
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:58 block
+-rw-r--r--  1 cerogers users         2 Aug 25 19:41 config 0
+drwxr-xr-x  3 cerogers users     20480 Aug 25 20:16 crypto
+drwxr-xr-x 50 cerogers users      4096 Aug 25 20:12 drivers
+drwxr-xr-x 10 cerogers users      4096 Aug 25 20:16 firmware
+drwxr-xr-x 37 cerogers users      4096 Aug 25 20:16 fs
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:54 include
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:13 init
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:57 ipc
+drwxr-xr-x  6 cerogers users     12288 Aug 25 20:16 kernel
+drwxr-xr-x  5 cerogers users     12288 Aug 25 20:16 lib
+-rw-r--r--  1 cerogers users       521 Sep  3 22:08 Makefile
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:56 mm
+-rw-r--r--  1 cerogers users      2296 Aug 25 19:54 modules.builtin
+-rw-r--r--  1 cerogers users     28681 Sep  3 22:08 modules.order
+-rw-r--r--  1 cerogers users    384303 Aug 25 20:14 Module.symvers
+drwxr-xr-x 31 cerogers users      4096 Aug 25 20:10 net
+drwxr-xr-x  7 cerogers users      4096 Aug 25 19:54 scripts
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:57 security
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:00 sound
+lrwxrwxrwx  1 cerogers users        24 Sep  3 22:08 source -> /home/cerogers/kernelSrc
+-rw-r--r--  1 cerogers users   1280394 Aug 25 20:13 System.map
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:54 usr
+-rwxr-xr-x  1 cerogers users 111245610 Aug 25 20:13 vmlinux
+-rw-r--r--  1 cerogers users 135668097 Aug 25 20:13 vmlinux.o
+
+Wall clock time for the command to execute:
+15 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+11
+
+Number of times the process gave up the CPU voluntarily:
+2
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+333
+
+Wall clock time for the command to execute:
+23 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+13
+
+Number of times the process gave up the CPU voluntarily:
+7
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+625
+pwd: invalid option -- 's'
+Try `pwd --help' for more information.
+
+Wall clock time for the command to execute:
+10 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+0
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+214
+total 242908
+drwxr-xr-x  4 cerogers users      4096 Aug 25 20:13 arch
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:58 block
+-rw-r--r--  1 cerogers users         2 Aug 25 19:41 config 0
+drwxr-xr-x  3 cerogers users     20480 Aug 25 20:16 crypto
+drwxr-xr-x 50 cerogers users      4096 Aug 25 20:12 drivers
+drwxr-xr-x 10 cerogers users      4096 Aug 25 20:16 firmware
+drwxr-xr-x 37 cerogers users      4096 Aug 25 20:16 fs
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:54 include
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:13 init
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:57 ipc
+drwxr-xr-x  6 cerogers users     12288 Aug 25 20:16 kernel
+drwxr-xr-x  5 cerogers users     12288 Aug 25 20:16 lib
+-rw-r--r--  1 cerogers users       521 Sep  3 22:08 Makefile
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:56 mm
+-rw-r--r--  1 cerogers users      2296 Aug 25 19:54 modules.builtin
+-rw-r--r--  1 cerogers users     28681 Sep  3 22:08 modules.order
+-rw-r--r--  1 cerogers users    384303 Aug 25 20:14 Module.symvers
+drwxr-xr-x 31 cerogers users      4096 Aug 25 20:10 net
+drwxr-xr-x  7 cerogers users      4096 Aug 25 19:54 scripts
+drwxr-xr-x  5 cerogers users      4096 Aug 25 19:57 security
+drwxr-xr-x  2 cerogers users      4096 Aug 25 20:00 sound
+lrwxrwxrwx  1 cerogers users        24 Sep  3 22:08 source -> /home/cerogers/kernelSrc
+-rw-r--r--  1 cerogers users   1280394 Aug 25 20:13 System.map
+drwxr-xr-x  2 cerogers users      4096 Aug 25 19:54 usr
+-rwxr-xr-x  1 cerogers users 111245610 Aug 25 20:13 vmlinux
+-rw-r--r--  1 cerogers users 135668097 Aug 25 20:13 vmlinux.o
+
+Wall clock time for the command to execute:
+8 milliseconds
+
+User CPU time:
+0 millisecconds
+
+System CPU time:
+0 millisecconds
+
+Number of times the process was preempted involuntarily:
+9
+
+Number of times the process gave up the CPU voluntarily:
+1
+
+Number of hard page faults:
+0
+
+Number of page faults that could be satisfied using unreclaimed pages:
+346

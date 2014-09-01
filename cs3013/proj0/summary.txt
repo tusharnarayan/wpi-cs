@@ -1,0 +1,12 @@
+Tushar Narayan
+tnarayan@wpi.edu
+
+Summary:
+The goal of this project was to get the virtual machine working on my computer, to build 
+the Linux kernel, and then install and boot into the Linux kernel. No modifications were made
+to the kernel during this project.
+
+Issues faced:
+Since my host computer is a 2 core machine, the VMware Player was a slightly unresponsive at 
+times. It also took a bit long to build the Linux kernel. Apart from these hardware related 
+issues, I had no major issues during this project.

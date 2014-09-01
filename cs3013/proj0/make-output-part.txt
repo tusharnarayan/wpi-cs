@@ -1,0 +1,52 @@
+#Tushar Narayan
+#tnarayan@wpi.edu
+
+#lines from the start and end of the make-output.txt file
+
+#lines from the start of the make-output.txt:
+  GEN     /home/tnarayan/kernelDst/Makefile
+  HOSTLD  scripts/kconfig/conf
+scripts/kconfig/conf --silentoldconfig Kconfig
+#
+# configuration written to .config
+#
+  GEN     /home/tnarayan/kernelDst/Makefile
+  CHK     include/linux/version.h
+  UPD     include/linux/version.h
+  Using /home/tnarayan/work/linux-2.6.37.6-0.5 as source for kernel
+  CHK     include/generated/utsrelease.h
+  UPD     include/generated/utsrelease.h
+  HOSTCC  scripts/genksyms/genksyms.o
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  SHIPPED scripts/genksyms/lex.c
+  SHIPPED scripts/genksyms/parse.h
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/file2alias.o
+  CC      kernel/bounds.s
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  GEN     include/generated/bounds.h
+  CC      arch/x86/kernel/asm-offsets.s
+  SHIPPED scripts/genksyms/keywords.c
+
+#lines from the end of make-output.txt
+  IHEX    firmware/radeon/RS780_pfp.bin
+  IHEX    firmware/radeon/RS780_me.bin
+  IHEX    firmware/radeon/RV770_pfp.bin
+  IHEX    firmware/radeon/RV730_pfp.bin
+  IHEX    firmware/radeon/RV770_me.bin
+  IHEX    firmware/radeon/RV730_me.bin
+  IHEX    firmware/radeon/RV710_pfp.bin
+  IHEX    firmware/radeon/RV710_me.bin
+  IHEX    firmware/qlogic/1040.bin
+  IHEX    firmware/qlogic/1280.bin
+  IHEX    firmware/qlogic/12160.bin
+  IHEX    firmware/tigon/tg3.bin
+  IHEX    firmware/tigon/tg3_tso5.bin
+  IHEX    firmware/tigon/tg3_tso.bin
+  IHEX    firmware/kaweth/new_code.bin
+  IHEX    firmware/kaweth/new_code_fix.bin
+  IHEX    firmware/kaweth/trigger_code.bin
+  IHEX    firmware/kaweth/trigger_code_fix.bin
+  H16TOFW firmware/matrox/g200_warp.fw
+  H16TOFW firmware/matrox/g400_warp.fw

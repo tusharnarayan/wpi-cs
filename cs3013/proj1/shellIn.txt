@@ -1,0 +1,16 @@
+grep std runCommand.c
+ls /home/
+pwd
+s
+cd ..
+ls -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l -l
+grep thisisthelongestnameforacommandeverandshouldhopefullybreakandmanwillreturnthatitdoesnotworkalsoijustwantedtosaythatfourtytwoistheanswertoallthingspossibleandthatthisismorethanonehundredandtwentyeightcharacterslong shell.c
+pwd
+ls
+cd /home/cerogers/kernelDst
+pwd
+starpower!
+pwd -starpower!
+ls -l
+exit
+ls
