@@ -1,0 +1,154 @@
+\section{mystructs.c File Reference}
+\label{mystructs_8c}\index{mystructs.c@{mystructs.c}}
+{\tt \#include \char`\"{}mystructs.h\char`\"{}}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{name\_\-length}~(6)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{Employee} $\ast$ \bf{make\_\-employee} (char $\ast$name, int birth\_\-year, int starting\_\-year)
+\item 
+void \bf{print\_\-employee} (\bf{Employee} $\ast$emp\_\-p)
+\item 
+\bf{Employee} $\ast$ \bf{create\_\-random\_\-emp} ()
+\item 
+char $\ast$ \bf{generate\_\-random\_\-string} ()
+\item 
+int \bf{generate\_\-random\_\-year} ()
+\item 
+\bf{Employee} $\ast$ \bf{random\_\-array\_\-allocater} (int count)
+\item 
+void \bf{pointers\_\-array\_\-printer} (\bf{Employee} $\ast$base\_\-emp, int count)
+\item 
+\bf{Employee} $\ast$ \bf{array\_\-duplicater} (\bf{Employee} $\ast$base\_\-emp, int count)
+\item 
+void \bf{array\_\-deallocater} (\bf{Employee} $\ast$base\_\-emp, int count)
+\item 
+\bf{Employee} $\ast$ \bf{deep\_\-copy} (\bf{Employee} $\ast$base\_\-emp, int count)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{mystructs.c@{mystructs.c}!name_length@{name\_\-length}}
+\index{name_length@{name\_\-length}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define name\_\-length~(6)}\label{mystructs_8c_5fcb8067c4d02befbecc693502f86d88}
+
+
+\doxyref{mystructs.c}{p.}{mystructs_8c} \begin{Desc}
+\item[Author:]Tushar Narayan Functions that operate on structs \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mystructs.c@{mystructs.c}!array_deallocater@{array\_\-deallocater}}
+\index{array_deallocater@{array\_\-deallocater}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void array\_\-deallocater (\bf{Employee} $\ast$ {\em base\_\-emp}, int {\em count})}\label{mystructs_8c_a103294d8edeca5292a7d24428976feb}
+
+
+Function array\_\-deallocater Takes an array of pointers to structs, and deallocates it. We have to assume that all the pointers have been returned by a previous call to malloc(). If not, segfaults occur, as shown below.
+
+WARNING - THIS FUNCTION WILL RETURN A SEGFAULT.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base\_\-emp}]the base of the array of pointers to be deallocated \item[{\em count}]number of pointers to the struct in array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\index{mystructs.c@{mystructs.c}!array_duplicater@{array\_\-duplicater}}
+\index{array_duplicater@{array\_\-duplicater}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ array\_\-duplicater (\bf{Employee} $\ast$ {\em base\_\-emp}, int {\em count})}\label{mystructs_8c_df3e953715ca2fbe495f259c6a2baeca}
+
+
+Function array\_\-duplicater Takes an array of pointers to structs, and duplicates just the pointers. (shallow copy) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base\_\-emp}]the base of the array of pointers to be printed \item[{\em count}]number of pointers to the struct in array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the pointer to base of duplicate array \end{Desc}
+\index{mystructs.c@{mystructs.c}!create_random_emp@{create\_\-random\_\-emp}}
+\index{create_random_emp@{create\_\-random\_\-emp}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ create\_\-random\_\-emp ()}\label{mystructs_8c_f06bb50a5a03bc9a0f1009c4fb8b929b}
+
+
+\index{mystructs.c@{mystructs.c}!deep_copy@{deep\_\-copy}}
+\index{deep_copy@{deep\_\-copy}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ deep\_\-copy (\bf{Employee} $\ast$ {\em base\_\-emp}, int {\em count})}\label{mystructs_8c_28cc1a533d65340bcb9563bb5331e952}
+
+
+Function deep\_\-copy Takes an array of pointers to structs, and duplicates it (deep copy). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base\_\-emp}]the base of the array of pointers to be printed \item[{\em count}]number of pointers to the struct in array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the pointer to base of duplicate array \end{Desc}
+\index{mystructs.c@{mystructs.c}!generate_random_string@{generate\_\-random\_\-string}}
+\index{generate_random_string@{generate\_\-random\_\-string}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ generate\_\-random\_\-string ()}\label{mystructs_8c_868d130585077b8c5c233a76cf38bead}
+
+
+Function generate\_\-random\_\-string Generates and returns a random string. Takes no parameters. \begin{Desc}
+\item[Returns:]pointer to the generated random string. \end{Desc}
+\index{mystructs.c@{mystructs.c}!generate_random_year@{generate\_\-random\_\-year}}
+\index{generate_random_year@{generate\_\-random\_\-year}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int generate\_\-random\_\-year ()}\label{mystructs_8c_0796fe72670169df5d9f571c8e3be793}
+
+
+Function generate\_\-random\_\-year Generates and returns a random year. Years can range from 1 to 2011 Takes no parameters. \begin{Desc}
+\item[Returns:]the generated random year. \end{Desc}
+\index{mystructs.c@{mystructs.c}!make_employee@{make\_\-employee}}
+\index{make_employee@{make\_\-employee}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ make\_\-employee (char $\ast$ {\em name}, int {\em birth\_\-year}, int {\em starting\_\-year})}\label{mystructs_8c_a660f63ad574330839a430ff4e2ed1cf}
+
+
+Function make\_\-employee Function that creates a variable of type Employee struct. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]pointer to string of employee \item[{\em birth\_\-year}]date of birth of employee \item[{\em starting\_\-year}]year the employee started work \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to newly\_\-created struct or NULL if no memory available \end{Desc}
+\index{mystructs.c@{mystructs.c}!pointers_array_printer@{pointers\_\-array\_\-printer}}
+\index{pointers_array_printer@{pointers\_\-array\_\-printer}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void pointers\_\-array\_\-printer (\bf{Employee} $\ast$ {\em base\_\-emp}, int {\em count})}\label{mystructs_8c_17a84f9519304b49309decd6b3d1e2dc}
+
+
+Function pointers\_\-array\_\-printer Takes an array of pointers and a count, and prints out all the structs that the pointers in the array point to. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base\_\-emp}]the base of the array of pointers to be printed \item[{\em count}]number of pointers to structs in the array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\index{mystructs.c@{mystructs.c}!print_employee@{print\_\-employee}}
+\index{print_employee@{print\_\-employee}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\_\-employee (\bf{Employee} $\ast$ {\em emp\_\-p})}\label{mystructs_8c_486c8a67b28b46d8b8cd96822e9c1e0e}
+
+
+Function print\_\-employee Function that prints the members of a variable of type Employee struct. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em emp\_\-p}]pointer to a struct of type Employee \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void function only prints members \end{Desc}
+\index{mystructs.c@{mystructs.c}!random_array_allocater@{random\_\-array\_\-allocater}}
+\index{random_array_allocater@{random\_\-array\_\-allocater}!mystructs.c@{mystructs.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ random\_\-array\_\-allocater (int {\em count})}\label{mystructs_8c_b758313ac22f4427edb44f1a43321cba}
+
+
+Function random\_\-array\_\-allocater Takes a count and allocates an array which can hold that many pointers to the struct, then fills each element of the array with a pointer to a newly-created struct filled with random data. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em count}]number of pointers to the struct that the function allocates \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]base of array of pointers \end{Desc}

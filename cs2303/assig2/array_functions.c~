@@ -1,0 +1,60 @@
+/** File array_functions.c
+ * @author Tushar Narayan
+ *
+ * Contains functions that operate on arrays.
+ * Functions for sorting arrays using BubbleSort,
+ * and filling in an array (using a random number
+ * generator function).
+ */
+
+/**
+ * tnarayan@wpi.edu
+ */
+ 
+#include "array_functions.h"
+#include <time.h>
+ 
+/** Function bubble_sort
+ * Sorts an array of integers using the BubbleSort sorting algrithm.
+ * @param a Array of integers to sort.
+ * @param num_elements Number of elements in the array
+*/
+void bubble_sort(int a[], int num_elements) {
+  int round;
+  int i;
+  int inorder;
+  int temp;
+
+  for(round = num_elements - 1; round >= 1; round--){
+    for(i =0, inorder = 1; i < round; i++){
+      if(a[i] > a[i + 1]){
+		inorder = 0;
+		temp = a[i];
+		a[i] = a[i + 1];
+		a[i + 1] = temp;
+      }
+    }
+    if(inorder == 1) break;
+  }
+}
+
+/** Function generate_random_array
+ * Fills an array with random integers.
+ * @param a Array to fill with random integers.
+*/
+void generate_random_array(int a[]) {
+	int i; // loop counter
+	srand(time(NULL));
+	for(i = 0; i < RANDOM_ARRAY_SIZE; i++){
+		a[i] = generate_random_num();
+	}
+}
+
+/** Function generate_random_num
+ * Generates and returns a random integer.
+ * @return The generated random integer.
+*/
+int generate_random_num() {
+	int random_num = rand() % (RANDOM_MAX_NUM + 1);
+	return random_num;
+}

@@ -1,0 +1,72 @@
+\section{binaryarrays.c File Reference}
+\label{binaryarrays_8c}\index{binaryarrays.c@{binaryarrays.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \bf{\_\-Bin\-Emp}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{MAX\_\-LENGTH}~(20)
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{\_\-Bin\-Emp} \bf{Bin\-Emp}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{output\-Employee\-To\-Binary} (int fdesc, \bf{Bin\-Emp} $\ast$emp, int num\_\-bytes)
+\item 
+int \bf{main} ()
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{binaryarrays.c@{binaryarrays.c}!MAX_LENGTH@{MAX\_\-LENGTH}}
+\index{MAX_LENGTH@{MAX\_\-LENGTH}!binaryarrays.c@{binaryarrays.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-LENGTH~(20)}\label{binaryarrays_8c_9dea1f0bdad8046729180b16db0a8d13}
+
+
+Program for writing to and reading from binary files. \begin{Desc}
+\item[Author:]Tushar Narayan \tt{tnarayan@wpi.edu} \end{Desc}
+
+
+\subsection{Typedef Documentation}
+\index{binaryarrays.c@{binaryarrays.c}!BinEmp@{BinEmp}}
+\index{BinEmp@{BinEmp}!binaryarrays.c@{binaryarrays.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{\_\-Bin\-Emp} \bf{Bin\-Emp}}\label{binaryarrays_8c_c3b8faf74095b0194633e40cd4dee394}
+
+
+
+
+\subsection{Function Documentation}
+\index{binaryarrays.c@{binaryarrays.c}!main@{main}}
+\index{main@{main}!binaryarrays.c@{binaryarrays.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int main ()}\label{binaryarrays_8c_446c6b9a1a4dbab517fbb760870458a3}
+
+
+main function \begin{Desc}
+\item[Returns:]0 for success, 1 indicating file not opened, 2 indicated file not closed properly, 3 indicating file not read properly \end{Desc}
+\index{binaryarrays.c@{binaryarrays.c}!outputEmployeeToBinary@{outputEmployeeToBinary}}
+\index{outputEmployeeToBinary@{outputEmployeeToBinary}!binaryarrays.c@{binaryarrays.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void output\-Employee\-To\-Binary (int {\em fdesc}, \bf{Bin\-Emp} $\ast$ {\em emp}, int {\em num\_\-bytes})}\label{binaryarrays_8c_4d667eb4e1e165230a3902da8b0ff3c9}
+
+
+Function output\-Employee\-To\-Binary outputs the members of an Employee struct to a binary file with a fixed number of bytes for each employee \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fdesc}]file descriptor of file to write to \item[{\em emp}]pointer to the employee to write \item[{\em num\_\-bytes}]number of bytes to attempt to write \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}

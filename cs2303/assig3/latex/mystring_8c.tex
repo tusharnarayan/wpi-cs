@@ -1,0 +1,109 @@
+\section{mystring.c File Reference}
+\label{mystring_8c}\index{mystring.c@{mystring.c}}
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include \char`\"{}mystring.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \bf{mystrdup} (const char $\ast$src)
+\item 
+int \bf{mystrlen} (const char $\ast$src\_\-str)
+\item 
+char $\ast$ \bf{mystrcpy} (char $\ast$dest\_\-str, const char $\ast$src\_\-str)
+\item 
+char $\ast$ \bf{mystrcat} (char $\ast$dest\_\-str, const char $\ast$src\_\-str)
+\item 
+char $\ast$ \bf{mystrncat} (char $\ast$dest\_\-str, const char $\ast$src\_\-str, size\_\-t n)
+\item 
+char $\ast$ \bf{mystrncpy} (char $\ast$dest\_\-str, const char $\ast$src\_\-str, size\_\-t n)
+\item 
+char $\ast$ \bf{mystrndup} (const char $\ast$src, size\_\-t n)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{mystring.c@{mystring.c}!mystrcat@{mystrcat}}
+\index{mystrcat@{mystrcat}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrcat (char $\ast$ {\em dest\_\-str}, const char $\ast$ {\em src\_\-str})}\label{mystring_8c_c60bc6a9e3a25a7291fd602b6dcda2b8}
+
+
+Function mystrcat Function that appends the source string to the destination string. Overwrites the terminating character of the destination string and then adds a terminating character. The strings may not overlap, and the destination string must have enough space for the result. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest\_\-str}]String to where the source string has to be appended \item[{\em src\_\-str}]String that has to be appended \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to destination string \end{Desc}
+\index{mystring.c@{mystring.c}!mystrcpy@{mystrcpy}}
+\index{mystrcpy@{mystrcpy}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrcpy (char $\ast$ {\em dest\_\-str}, const char $\ast$ {\em src\_\-str})}\label{mystring_8c_4ca137dfdc47bfb151a5263f25710227}
+
+
+Function mystrcpy Function that copies the source string to the destination string including the terminating character \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest\_\-str}]String to where the source string has to be copied \item[{\em src\_\-str}]String that has to be copied \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to destination string \end{Desc}
+\index{mystring.c@{mystring.c}!mystrdup@{mystrdup}}
+\index{mystrdup@{mystrdup}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrdup (const char $\ast$ {\em src})}\label{mystring_8c_e4d69f24eeedc25d4a7abe09f6656cc2}
+
+
+Function mystrdup Function that duplicates a string and returns a pointer to the duplicate string. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]String that has to be duplicated \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to freshly-allocated duplicate string or NULL if insufficient memory was available. \end{Desc}
+\index{mystring.c@{mystring.c}!mystrlen@{mystrlen}}
+\index{mystrlen@{mystrlen}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int mystrlen (const char $\ast$ {\em src\_\-str})}\label{mystring_8c_477287d2512917d6190c5c2543805cfb}
+
+
+Function mystrlen Function that calculates the length of the input string, not including the terminating character \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src\_\-str}]String whose length has to be determined \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]length of the input string \end{Desc}
+\index{mystring.c@{mystring.c}!mystrncat@{mystrncat}}
+\index{mystrncat@{mystrncat}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrncat (char $\ast$ {\em dest\_\-str}, const char $\ast$ {\em src\_\-str}, size\_\-t {\em n})}\label{mystring_8c_64269d8e515794bc11b3477159a7812d}
+
+
+Function mystrncat Function that appends the source string to the destination string. Overwrites the terminating character of the destination string and then adds a terminating character. It uses at most n characters from the source string. The strings may not overlap, and the destination string must have enough space for the result. Since the resut is always terminated with the terminating character, at most n + 1 characters are written. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest\_\-str}]String to where the source string has to be appended \item[{\em src\_\-str}]String that has to be appended \item[{\em n}]maximum number of characters that will be copied from source \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to destination string \end{Desc}
+\index{mystring.c@{mystring.c}!mystrncpy@{mystrncpy}}
+\index{mystrncpy@{mystrncpy}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrncpy (char $\ast$ {\em dest\_\-str}, const char $\ast$ {\em src\_\-str}, size\_\-t {\em n})}\label{mystring_8c_cc77072c3a76487c51dba97662cea1d3}
+
+
+Function mystrncpy Function that copies the source string to the destination string, including the terminating characer. The destination string must be large enough to receive the copy. However, no more than n bytes of the src string are copied. Thus, if there is no null byte among the first n bytes of src, the result will not be null terminated. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest\_\-str}]String to where the source string has to be copied \item[{\em src\_\-str}]String that has to be copied \item[{\em n}]maximum number of bytes that will be copied from source \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to destination string \end{Desc}
+\index{mystring.c@{mystring.c}!mystrndup@{mystrndup}}
+\index{mystrndup@{mystrndup}!mystring.c@{mystring.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrndup (const char $\ast$ {\em src}, size\_\-t {\em n})}\label{mystring_8c_384fa34f59b9f08fcc03ec781ffa83b0}
+
+
+Function mystrndup Function that duplicates a string and returns a pointer to the duplicate string. Copies at most n characters. If the source is longer than n, only n characters are copied and a terminating null byte is added. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]String that has to be duplicated \item[{\em n}]maximum number of characters that will be duplicated from source \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to freshly-allocated duplicated string or NULL if insufficient memory was available. \end{Desc}
