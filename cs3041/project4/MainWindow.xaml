@@ -1,0 +1,38 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UNIX Man Pages"
+        Height="655"
+        Width="1084" ResizeMode="CanResize">
+    <Window.Resources>
+        <XmlDataProvider x:Key="Commands"
+                     Source="/commands.xml"
+                     XPath="/manpage/Command" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="678*" />
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="94*" />
+        </Grid.ColumnDefinitions>
+        <Label Content="Search for:" Height="94" HorizontalAlignment="Left" Margin="0,49,0,0" Name="lbl_search" VerticalAlignment="Top" Width="259" BorderBrush="Black" />
+        <ListBox ItemsSource="{Binding Source={StaticResource Commands}}"
+             DisplayMemberPath="dname" Margin="274,197,0,38" ItemStringFormat="" FontSize="14" BorderBrush="Black" Padding="30,0,0,0" Name="list_commands" Grid.ColumnSpan="3" />
+        <ListBox ItemsSource="{Binding Source={StaticResource Commands}}"
+             DisplayMemberPath="Topic" Margin="0,171,0,38" ItemStringFormat="" FontSize="14" BorderBrush="Black" Padding="30,0,0,0" HorizontalAlignment="Left" Width="268" Name="list_categories" Foreground="#FFD8D8D8" />
+        <TextBox Height="34" HorizontalAlignment="Left" Margin="69,54,0,0" Name="txt_searchInput" VerticalAlignment="Top" Width="182" BorderBrush="Black" />
+        <Button Content="Get Man Page!" Height="28" HorizontalAlignment="Left" Margin="69,103,0,0" Name="btn_launchSearch" VerticalAlignment="Top" Width="182" Background="#FF64AAE6" Foreground="White" BorderBrush="Black" OpacityMask="Black" />
+        <TextBox Height="80" HorizontalAlignment="Left" Margin="274,73,0,0" Name="txt_description" VerticalAlignment="Top" Width="788" BorderBrush="Black" 
+                 Text="The UNIX Man pages provide you with each and quick access to all the UNIX man pages you need.
+No more looking at big white chunks of text on a black background!
+No more hoping for clickable references to other functions!
+It's all here, in good old html – from the man pages, but with hyperlinks!" 
+                 AcceptsTab="True" IsReadOnly="True" AcceptsReturn="True" Grid.ColumnSpan="3" TextWrapping="Wrap" />
+        <Label Content="The UNIX Man Pages" Height="49" HorizontalAlignment="Left" Margin="0,-1,0,0" Name="lbl_header" VerticalAlignment="Top" Width="1062" Grid.ColumnSpan="3" Background="#FFCBCBCB" BorderBrush="Black" FontSize="15" FontStyle="Normal" FontWeight="Normal" />
+        <Label Background="#FFCBCBCB" BorderBrush="Black" Content="Currently Popular MAN Pages:" FontSize="14" FontStyle="Normal" FontWeight="Normal" Height="51" HorizontalAlignment="Left" Margin="274,149,0,0" Name="lbl_header_right" VerticalAlignment="Top" Width="788" Grid.ColumnSpan="3" />
+        <Label Background="#FFCBCBCB" BorderBrush="Black" Content="Topics:" FontSize="14" FontStyle="Normal" FontWeight="Normal" Height="36" HorizontalAlignment="Left" Margin="0,136,0,0" Name="lbl_header_left" VerticalAlignment="Top" Width="259" />
+        <Label Content="Welcome!" Height="28" Margin="274,47,0,0" Name="lbl_welcome" VerticalAlignment="Top" Grid.ColumnSpan="3" Background="DimGray" BorderBrush="White" Foreground="White" />
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="257,47,0,38" Name="Border1" Width="19" Background="Black"></Border>
+        <Label Background="#FFCBCBCB" BorderBrush="Black" Content="TheUNIXManPages | Disclaimer | About | Feedback" FontSize="12" FontStyle="Normal" FontWeight="Normal" Grid.ColumnSpan="3" Height="42" HorizontalAlignment="Left" Margin="0,574,0,0" Name="lbl_footer" VerticalAlignment="Top" Width="1062" Padding="400,15,0,0" Foreground="White" />
+    </Grid>
+</Window>

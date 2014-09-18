@@ -121,7 +121,7 @@ int main(){
   i = 0; // to loop through the bemps array
   BinEmp binemp; //temporary variable to store read data
 
-  int size_bf; //variable to store size of the binary file
+  int size_bf; //variable to store of the binary file
   struct stat buffer;
   int temp_num = stat("binaryarrays.bin", &buffer);
   size_bf = buffer.st_size;

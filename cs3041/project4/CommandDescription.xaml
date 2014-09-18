@@ -1,0 +1,32 @@
+﻿<Window x:Class="CommandDescription"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Command Description"
+        Height="970"
+        Width="1556">
+        <!--Loaded="Window_Loaded"-->
+    <Window.Resources>
+        <XmlDataProvider x:Key="Commands"
+                     Source="/commands.xml"
+                     XPath="/manpage/Command" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="452*" />
+            <ColumnDefinition Width="1082*" />
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Source={StaticResource Commands}}"
+             DisplayMemberPath="Topic" Margin="0,171,0,23" ItemStringFormat="" FontSize="14" BorderBrush="Black" Padding="30,0,0,0" HorizontalAlignment="Left" Width="268" Name="box_categories" />
+        <Label Height="36" HorizontalAlignment="Left" Margin="0,0,0,758" Name="lbl_header_left" VerticalAlignment="Bottom" Width="259" Content="Topics:" BorderBrush="Black" Foreground="Black" Background="#FFCBCBCB" />
+        <Label Height="25" HorizontalAlignment="Left" Margin="0,906,0,0" Name="lbl_footer" VerticalAlignment="Top" Width="1534" Content="TheUNIXManPages | Disclaimer | About" BorderBrush="Black" Background="#FFCBCBCB" Grid.ColumnSpan="2" Padding="650,5,5,5" />
+        <Label Height="48" HorizontalAlignment="Left" Name="lbl_header" Content="The UNIX Man Pages" VerticalAlignment="Top" Width="1534" BorderBrush="Black" Background="#FFCBCBCB" Grid.ColumnSpan="2" />
+        <Label Height="92" HorizontalAlignment="Left" Margin="0,47,0,0" Name="lbl_search" VerticalAlignment="Top" Width="259" Content="Search for:" BorderBrush="Black" />
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="257,47,0,23" Name="Border1" Width="19" Background="Black"></Border>
+        <TextBox Height="34" HorizontalAlignment="Left" Margin="69,54,0,0" Name="txt_searchInput" VerticalAlignment="Top" Width="182" BorderBrush="Black" />
+        <Button Content="Get Man Page!" Height="28" HorizontalAlignment="Left" Margin="69,103,0,0" Name="btn_launchSearch" VerticalAlignment="Top" Width="182" Background="#FF64AAE6" Foreground="White" BorderBrush="Black" OpacityMask="Black" />
+       <!-- <ListBox Margin="266,47,-1,23" ItemsSource="{Binding}" Name="FirstCommands" /> -->
+        <ListBox ItemsSource="{Binding Source={StaticResource Commands}}"
+             DisplayMemberPath="Description" Margin="274,46,0,23" ItemStringFormat="" FontSize="14" BorderBrush="Black" Padding="30,0,0,0" HorizontalAlignment="Left" Width="1260" Name="box_desc" Grid.ColumnSpan="2" />
+    </Grid>
+</Window>
