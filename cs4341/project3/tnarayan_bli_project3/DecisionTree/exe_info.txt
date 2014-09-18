@@ -1,0 +1,9 @@
+How to run the file:
+
+1. unzip the submission package, put the test_dataset folder and bli_tnarayan_project3.jar under the same directory
+
+2. in the windows commandline, run "java -jar bli_tnarayan_project3.jar" 
+
+3. open the C:/AIproj3 folder to view the generated csv file bli_tnarayan_result.csv
+
+the test_dataset folder is crucial for the program to run correctly because we need to use the training data to generate a decision tree. 

@@ -1,0 +1,32 @@
+Team: Bohao Li (bli), Tushar Narayan (tnarayan)
+
+The attributes we used are:
+IsHorizontalUnboundedThreeInARowWithOpponent()
+	This attribute checks for a connection of 3 tokens in a row horizontally for the current player. Once a connection of 3 is 
+	obtained, it then checks both the ends of that connection to see if the ends are open spaces. If they are, it increases the 
+	counter of the number of 3 in a row unbounded horizontal connections for the player.
+	It then carries out the same operation for the opponent.
+	It then checks to see if the number of unbounded 3 in a row connections for the current player is greater than or equal to 
+	the number of unbounded 3 in a row connections for the opponent. If yes, it returns an affirmative value; else, it returns 
+	a negative value.
+
+IsVerticalUnboundedThreeInARow()
+	This attribute checks for a connection of 3 tokens in a row vertically for the current player. Once a connection of 3 is 
+	found, it then checks the top of that connection to see if that is an open space. If it is, it increases the counter of the 
+	number of 3 in a row unbounded vertical connections for the player.
+	It then carries out the same operation for the opponent.
+	It then checks to see if the number of unbounded 3 in a row connections for the current player is greater than or equal to 
+	the number of unbounded 3 in a row connections for the opponent. If yes, it returns an affirmative value; else, it returns 
+	a negative value.
+	
+IsHorizontalUnboundedTwoInARowWithOpponent()
+	Exactly the same as IsHorizontalUnboundedThreeInARowWithOpponent(), except that it checks for 2 connections instead of 3.
+	
+IsDiagonalLeftThreeInARow()
+	This attribute checks for a connection of 3 tokens in the left diagonal. Once a connection of 3 is found, it increments the 
+	counter for the number of 3 connections in a left diagonal row. Depending on the connections found, it returns either an 
+	affirmative or negative value.
+	
+IsPlayerOneMoveFirst()
+	This attribute checks to see if the current player was the player that made the first move in the game. If yes, it returns 
+	an affirmative value; else, it returns a negative value.

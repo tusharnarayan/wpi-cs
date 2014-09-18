@@ -1,0 +1,6 @@
+Explanation on the Decision Tree:
+
+1. Our current algorithm for generating a decision tree is the one introduced at p702, Artificial Intelligence, A Modern Approach, ISBN 978-0-13-207148-2. To evaluate the importance of each attribute, we utilized the information-gain method using entropy calculation. 
+
+2. When the maximun value of importance in a node's attribute list is zero, we prune the sub branches of the node. 
+
