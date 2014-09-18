@@ -1,0 +1,17 @@
+This is the distributed shell project.
+
+name: John
+login: "test_password"
+
+These are defined at the top of both server.c and dsh.c.
+
+Language: English
+System Dependencies: Runs on the CCC systems.
+
+To compile, run the "make" command.
+
+Two exectuables are generated - "./server" and "./dsh".
+
+To run the server, run "./server". The -p flag can be used to specify the port to listen on - a default is specified. The -d flag can be used to specify the directory to serve files out of - the default is the current working directory. The -h flag prints usage information.
+
+To run the client, run "./dsh". The -c flag specifies the command to execute on the server - this MUST be specified. The -s flag specified the server's URL - this MUST be specifed - for example, cccwork4.wpi.edu. The -p flag specifies the port to listen on - a default is specified. The -h flag prints usage information.
