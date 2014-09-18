@@ -1,0 +1,34 @@
+import java.util.LinkedList;
+
+//NoCyclicExpr class, as a visitor, checks whether the IFormula objects contain loops.
+public class NoCyclicExpr implements IProc<Boolean> {
+  LinkedList<IFormula> list=new LinkedList<IFormula>();
+  SpreadSheet s;
+  NoCyclicExpr(SpreadSheet s, LinkedList<IFormula> list){
+    this.s=s;
+    this.list=list;
+  }
+  //Simple return true for a Num object.
+  public Boolean processNum(Num n) {
+    return true;
+  }
+  
+  //Checks both left and right for Plus.
+  public Boolean processPlus(Boolean leftres, Boolean rightres) {
+    return leftres&&rightres;
+  }
+  
+  //When referring to another cell, put the value of that cell into the visited list and recurse the traverse method. 
+  //Method will return false when called upon an object that is already in the visited list.
+  public Boolean processCellRef(CellRef c) throws CellNotFound {
+    if(! this.list.contains(c)){
+      list.add(c);
+      if(s.cells.containsKey(c.cellname))
+        return s.cells.get(c.cellname).traverse(new NoCyclicExpr(s,list));
+      else 
+        return true;
+    }
+    else return false;
+  }
+  
+}

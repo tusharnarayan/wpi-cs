@@ -1,0 +1,24 @@
+class ValueOf implements IProc<Integer> {
+  SpreadSheet masterSpreadSheet = new SpreadSheet();
+  
+  ValueOf(SpreadSheet masterSpreadSheet){
+    this.masterSpreadSheet = masterSpreadSheet;
+  }
+  
+  ValueOf(){}
+  
+  public Integer processNum(Num n) {
+    return n.value;
+  }
+  
+  public Integer processCellRef(CellRef c) throws CellNotFoundExn{
+    if ((masterSpreadSheet.returnSheet()).containsKey(c.cellname)){
+      return masterSpreadSheet.returnSheet().get(c.cellname).traverse(this);
+    }
+    throw new CellNotFoundExn();
+  }
+  
+  public Integer processPlus(Integer leftres, Integer rightres) {
+    return leftres + rightres;
+  }
+}

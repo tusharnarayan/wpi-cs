@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20110822-r5448">
+  <project autorefresh="false" main="Main" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Examples.java" package="" timestamp="14-Dec-2011 19:43:01">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="ValueOf.java" package="" timestamp="14-Dec-2011 19:28:51">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="Main.java" package="" timestamp="14-Dec-2011 19:27:34">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="CyclicException.java" package="" timestamp="14-Dec-2011 19:28:51">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="IFormulaV.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="IProc.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="NoRefs.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="Num.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="CellRef.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="Plus.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="ISpreadSheet.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="SpreadSheet.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="CellNotFoundExn.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+      <file name="NoCyclicExpr.java" package="" timestamp="14-Dec-2011 19:28:52">
+        <select from="9254" to="9254"/>
+        <scroll column="4643" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="../../../DrJava/tester.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

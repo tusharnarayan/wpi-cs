@@ -1,0 +1,43 @@
+interface IProc<R> {
+  R processNum(Num n);
+  R processCellRef(CellRef c);
+  R processPlus(R leftres, R rightres);
+}
+
+class NoRefs implements IProc<Boolean> {
+  public Boolean processNum(Num n) {
+    return true;
+  }
+  
+  public Boolean processCellRef(CellRef c) {
+    return false;
+  }
+  
+  public Boolean processPlus(Boolean leftres, Boolean rightres) {
+    return leftres && rightres;
+  }
+}
+  
+
+class ValueOf implements IProc<Integer> {
+  SpreadSheet masterSpreadSheet = new SpreadSheet();
+  
+  ValueOf(SpreadSheet masterSpreadSheet){
+    this.masterSpreadSheet = masterSpreadSheet;
+  }
+  
+  ValueOf(){}
+  
+  public Integer processNum(Num n) {
+    return n.value;
+  }
+  
+  public Integer processCellRef(CellRef c) {
+    return masterSpreadSheet.returnSheet().get(c.cellname).traverse(this);
+    
+  }
+  
+  public Integer processPlus(Integer leftres, Integer rightres) {
+    return leftres + rightres;
+  }
+}

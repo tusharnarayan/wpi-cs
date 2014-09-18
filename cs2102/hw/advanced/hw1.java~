@@ -1,0 +1,29 @@
+/*Homework 1
+ * Advanced Version
+ * 
+ * Tushar Narayan
+ * tnarayan
+ * 
+ * */
+
+import tester.* ;
+  
+class Main {
+  static Examples E = new Examples () ;
+  
+  public static void main(String[] args) {
+    Tester.run (E) ;
+  }
+}
+
+interface ITournament{
+}
+
+
+class InitMatch implements ITournament{
+  MatchData data;
+  InitMatch(MatchData data){
+    //constructor
+    this.data = data;
+  }
+}

@@ -1,0 +1,90 @@
+Axioms:
+
+1.1) Priority Queues:
+
+Name: PriorQ
+
+Operations:
+	newPQ: -> PriorQ			// produces a priority queue with no elements
+	addElt: PriorQ, integer -> PriorQ	// adds element
+	remMinElt: PriorQ -> PriorQ		// remove smallest element
+	getMinElt: PriorQ -> int		// return, but don’t remove, smallest element
+
+Properties:
+  - The set allows duplicates
+  - The elements within the set are accessed in order - ie, elements may be added to the Priority Queue in any order, 
+	but elements may only be removed in order from smallest to largest
+Axioms:
+	//on addElt and getMinElt
+	Assuming that sameplePQ = new PQ()
+	- if addElt(samplePQ, e) then getMinElt(samplePQ) = e
+	- if addElt(addElt(addElt(samplePQ, e1)), e2), e3), where e2<e1<e3, then getMinElt(samplePQ) = e2
+	- if addElt(addElt(addElt(samplePQ, e1)), e2), e3), where e1<e2<e3, then getMinElt(samplePQ) = e1
+ 
+  	// on remMinElt and getMinElt
+	Assuming PQ to be an existing Priority Queue with some elements
+	- if getMinElt(PQ) = e then remMinElt(PQ) = {PQ} - e
+
+	// on addElt and remMinElt
+	Assuming PQ to be an existing Priority Queue with some elements
+  	- if e < {PQ} then remMinElt(addElt(PQ,e)) = PQ
+
+
+1.2) Stacks
+
+Name: Stack
+
+Operations:
+	newStk: -> Stack // produces a Stack with no elements
+	push: Stack, int -> Stack // adds element
+	pop: Stack -> Stack // remove most recently-added element
+	top: Stack -> int // return, but don’t remove, most-recently added element
+
+Properties:
+  - The set allows duplicates
+  - elements are accessed in order of most recently added to least-recently added 
+	(otherwise known as "last in, first out", or LIFO-order)
+
+Axioms:
+	//on push and top
+	Assuming that sampleStack = new Stack()
+	- if push(sampleStack, e) then top(sampleStack) = e
+	- if push(push(push(sampleStack, e1), e2), e3) then top(sampleStack) = e3
+ 
+  	// on pop and top
+	Assuming Stk to be an existing Stack with some elements
+	- if top(Stk) = e then pop(Stk) = {Stk} - e
+
+	// on push and pop
+	Assuming Stk to be an existing Stack with some elements
+	- pop(push(Stk, e)) = Stk
+
+1.3) Queues
+
+Name: Queue
+
+Operations:
+	newQ: -> Queue // produces a Queue with no elements
+	enqueue: Queue, int -> Queue // adds element
+	dequeue: Queue -> Queue // remove least recently-added element
+	front: Queue -> int // return, but don’t remove, least-recently added element
+
+Properties:
+  - The set allows duplicates
+  - elements are accessed in order of least-recently added to most-recently added 
+	(otherwise known as "first in, first out", or FIFO-order)
+
+Axioms:
+	//on enqueue and front
+	Assuming that sampleQueue = new Queue()
+	- if enqueue(sampleQueue, e) then front(sampleQueue) = e
+	- if enqueue(enqueue(enqueue(sampleQueue, e1), e2), e3) then front(sampleQueue) = e1
+ 
+  	// on dequeue and front
+	Assuming Que to be an existing Queue with some elements
+	- if front(Que) = e then dequeue(Que) = {Que} - e
+
+	// on enqueue and dequeue
+	Assuming Que to be an existing Queue with some elements: 
+		Que = {e1, e2, e3, e4} (where numbers denote order of entry into the queue)
+	- dequeue(enqueue(Que, e)) = {e2, e3, e4, e}

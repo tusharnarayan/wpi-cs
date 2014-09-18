@@ -1,0 +1,23 @@
+import java.util.HashMap;
+
+class SpreadSheet {
+  HashMap<String, IFormula> masterSheet; //contain all the cells in the spreadsheet
+  
+  SpreadSheet(){
+    masterSheet = new HashMap<String, IFormula>();
+  }
+  
+  void editContents(String cellname, IFormula expr){
+    masterSheet.put(cellname, expr);
+  }
+  
+  Integer lookupValue(String forcell){
+    IFormula forcellContent = masterSheet.get(forcell);
+
+    return forcellContent.traverse(new ValueOf(this));
+  }
+  
+  public HashMap<String, IFormula> returnSheet(){
+   return masterSheet; 
+  }
+}

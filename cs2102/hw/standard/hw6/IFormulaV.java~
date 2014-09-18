@@ -1,0 +1,42 @@
+interface IFormula {
+  <R> R traverse(IProc<R> f);
+}
+ 
+
+class Num implements IFormula {
+  int value;
+
+  Num(int value) {
+    this.value = value;
+  }
+  
+  public <R> R traverse(IProc<R> f) {
+    return f.processNum(this);
+  }
+}
+
+class CellRef implements IFormula {
+  String cellname;
+  
+  CellRef(String cellname) {
+    this.cellname = cellname;
+  }
+  
+  public <R> R traverse(IProc<R> f) {
+    return f.processCellRef(this);
+  }
+}
+
+class Plus implements IFormula {
+  IFormula left;
+  IFormula right;
+  
+  Plus(IFormula left, IFormula right) {
+    this.left = left;
+    this.right = right;
+  }
+  
+  public <R> R traverse(IProc<R> f) {
+    return f.processPlus(this.left.traverse(f), this.right.traverse(f));
+  }
+}

@@ -1,0 +1,52 @@
+interface Iset {
+  // PROPERTY: a set has no duplicate elements
+  // PROPERTY: elements of a set are not ordered
+  // returns set containing all existing elements and the given element
+  Iset addElt (int elt);
+  // returns set containing all existing elements except the given element
+  Iset remElt (int elt);
+  // returns the number of distinct elements in the set
+  int size ();
+  // determines whether given element is in the set
+  boolean hasElt (int elt);
+}
+
+interface IAVLT {
+}
+  
+class MtAVLT implements IAVLT  {
+  MtAVLT() {}
+  
+  // returns set containing all existing elements and the given element
+  public IAVLT addElt (int elt) {
+    return new DataAVLT(elt, new MtAVLT(), new MtAVLT());
+  }
+
+}
+
+class DataAVLT implements IAVLT  {
+  int data;
+  IAVLT left;
+  IAVLT right;
+  
+  DataAVLT(int data, IAVLT left, IAVLT right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+  
+  // returns set containing all existing elements and the given element
+  public IAVLT addElt (int elt) {
+    if (elt == this.data)
+      return this; // not storing duplicate values
+    else if (elt < this.data)
+      return new DataAVLT (this.data,
+                          this.left.addElt(elt),
+                          this.right);
+    else // elt > this.data
+      return new DataAVLT (this.data,
+                          this.left,
+                          this.right.addElt(elt));
+  }
+  
+}

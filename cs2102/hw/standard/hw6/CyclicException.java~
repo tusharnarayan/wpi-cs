@@ -1,0 +1,2 @@
+class CyclicException extends Exception{
+}

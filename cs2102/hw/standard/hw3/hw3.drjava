@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20110822-r5448">
+  <project autorefresh="false" main="Main" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Examples.java" package="" timestamp="04-Dec-2011 15:34:11">
+        <select from="1582" to="1582"/>
+        <scroll column="496" row="0"/>
+      </file>
+      <file name="IBinTree.java" package="" timestamp="04-Dec-2011 15:28:04">
+        <select from="1582" to="1582"/>
+        <scroll column="496" row="0"/>
+      </file>
+      <file name="IHeap.java" package="" timestamp="04-Dec-2011 15:28:05">
+        <select from="1582" to="1582"/>
+        <scroll column="496" row="0"/>
+      </file>
+      <file name="Main.java" package="" timestamp="04-Dec-2011 15:28:05">
+        <select from="1582" to="1582"/>
+        <scroll column="496" row="0"/>
+      </file>
+      <file name="TestHeap.java" package="" timestamp="04-Dec-2011 15:32:39">
+        <select from="1582" to="1582"/>
+        <scroll column="496" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="../../tester.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

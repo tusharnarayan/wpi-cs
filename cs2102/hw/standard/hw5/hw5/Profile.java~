@@ -1,0 +1,9 @@
+//class for capturing the elements of a social network
+class Profile {
+  String name;
+  String college;
+  Profile(String name, String college){
+    this.name = name;
+    this.college = college;
+  }
+}

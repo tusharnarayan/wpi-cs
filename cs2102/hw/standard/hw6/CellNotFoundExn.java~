@@ -1,0 +1,3 @@
+public class CellNotFoundExn extends Exception {
+  CellNotFound(){}
+}

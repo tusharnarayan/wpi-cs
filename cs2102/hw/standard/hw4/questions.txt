@@ -1,0 +1,18 @@
+Homework 4
+
+Tushar Narayan
+tnarayan
+
+Saraf Rahman
+strahman
+
+Part 2) isMatch Implementation
+The given implementation of isMatch is awful since it uses instanceof's, which goes against the purpose of using an OO language for dispatch. Java is supposed
+to carry out type checks automatically - good OO programs should not check the type of objects explicitly, and the code violates this OO programming guideline.
+Using instanceof also complicates the design goal of having programs that are easily extensible.
+
+
+Part 3) Function Overloading error
+The overloaded functions version does not compile since the function declaration in the IMatch interface takes in a MenuItem, whereas the overloaded
+functions take in specific types of MenuItems (subclasses) and not the superclass. Hence a type error occurs, and Java tells us to implement
+the inherited isMatch method that consumes a MenuItem.

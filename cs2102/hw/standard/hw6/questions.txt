@@ -1,0 +1,28 @@
+/*Homework 6
+ * 
+ * Tushar Narayan
+ * tnarayan
+ * 
+ * Saraf Rahman
+ * strahman
+ * 
+ * Nikhil Godani
+ * nsgodani
+ * */
+
+
+1)Justify your choice of approach to handling cyclic cell references (in a sentence or two).
+The visited list saves the cell references that are visited, and hence grows on every single function call. Hence, when the cyclic reference are hit,
+the vistied list has that reference saved, and hence the function throws an exception. That exception is caught, and an appropriate message is printed.
+(Since the program currently has no UI, the try-catch constructs have been placed in the examples class.)
+
+
+2)Provide an argument that your ValueOf method will terminate in the face of a cyclic cell reference.
+The visited list grows every time a new cell reference is encoutered. Because of the invariant of checking the visited list every time, the function processes
+the cell referece iff the reference is a previously unencountered one, else it terminates. Hence, in the face of a cyclic cell reference,
+the function to compute the value of a cell terminates.
+
+
+3)Was there any advantage to our having used a visitor-organization for the ValueOf method on IFormulas?
+It made it easier to process different types of data that can be in a cell. Also, it was easier to implement throwing the exceptions for cases where the cell 
+is not found - only the cellRef traversal method could throw the Cell Not Found Exception (because of the visitor-organization).

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20110822-r5448">
+  <project autorefresh="false" main="Main" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Examples.java" package="" timestamp="06-Dec-2011 19:44:26">
+        <select from="22" to="22"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Main.java" package="" timestamp="04-Dec-2011 15:28:05">
+        <select from="22" to="22"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="WordFinder.java" package="" timestamp="06-Dec-2011 19:44:18">
+        <select from="22" to="22"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="../../tester.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
