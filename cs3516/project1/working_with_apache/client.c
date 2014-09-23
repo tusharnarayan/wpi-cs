@@ -17,8 +17,8 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <string.h>
-#include <netdb.h>
-#include <arpa/inet.h>
+#include        <netdb.h>
+#include        <arpa/inet.h>
 
 #define BUFFER_SIZE 2000
 
@@ -34,7 +34,6 @@ main(int argc, char *argv[]){
   char *server_url;
   int port_number;
   char *filename;
-  int bytes_read;
   
   if (argc < 4) {
     printf( "The program expects three arguments\n" );
@@ -79,6 +78,10 @@ main(int argc, char *argv[]){
     else
       printf("\t(no hostname returned by gethostbyaddr)\n");
   }             // End of for loop
+
+
+
+
   
   port = htons(port_number);  
 
@@ -94,11 +97,17 @@ main(int argc, char *argv[]){
   sa.sin_addr = *((struct in_addr *)hptr -> h_addr); 
 
   //  sa.sin_addr.s_addr = htonl(INADDR_ANY); /* the kernel assigns the IP addr*/
+
   //  inet_aton(server_url, &sa.sin_addr);
 
+
+
+  
   if (connect(fd, (struct sockaddr *) &sa, sizeof(sa))){
     printf("Error: the connect call failed!");
   }
+
+  //TODO design client request in the format that the server expects
   
   bzero(ip_output_buffer, sizeof(ip_output_buffer));
   //  sprintf(ip_output_buffer, "GET /%s HTTP/1.1\nHost: %s:%d\nConnection: keep-alive", filename, server_url, port_number);
@@ -110,22 +119,15 @@ main(int argc, char *argv[]){
   
   bzero(ip_input_buffer, sizeof(ip_input_buffer));
   
-  while(1){
-    bytes_read = recv(fd, ip_input_buffer, sizeof(ip_input_buffer) - 2, 0);
-
-    if(bytes_read == -1){
+  while(1)
+    {
+      if ( recv( fd, ip_input_buffer, sizeof(ip_input_buffer) - 2, 0 ) <= 0 ){
+	//TODO check if the server closed the connection
 	printf("Error in the recv call!");
 	exit(2);
       }
-    else if(bytes_read ==0){
-      printf("Server closed the connection!\n");
-      break;
-    }
-    else{
       printf( "%s", ip_input_buffer );
     }
-    bzero(ip_input_buffer, sizeof(ip_input_buffer));
-  }
   
   close(fd);
   return 0;

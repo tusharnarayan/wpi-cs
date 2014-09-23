@@ -34,7 +34,6 @@ main(int argc, char *argv[]){
   char *server_url;
   int port_number;
   char *filename;
-  int bytes_read;
   
   if (argc < 4) {
     printf( "The program expects three arguments\n" );
@@ -79,6 +78,10 @@ main(int argc, char *argv[]){
     else
       printf("\t(no hostname returned by gethostbyaddr)\n");
   }             // End of for loop
+
+
+
+
   
   port = htons(port_number);  
 
@@ -111,21 +114,13 @@ main(int argc, char *argv[]){
   bzero(ip_input_buffer, sizeof(ip_input_buffer));
   
   while(1){
-    bytes_read = recv(fd, ip_input_buffer, sizeof(ip_input_buffer) - 2, 0);
-
-    if(bytes_read == -1){
+    if(recv(fd, ip_input_buffer, sizeof(ip_input_buffer) - 1, 0) <= 0){
 	printf("Error in the recv call!");
 	exit(2);
       }
-    else if(bytes_read ==0){
-      printf("Server closed the connection!\n");
-      break;
-    }
-    else{
       printf( "%s", ip_input_buffer );
+      bzero(ip_input_buffer, sizeof(ip_input_buffer));
     }
-    bzero(ip_input_buffer, sizeof(ip_input_buffer));
-  }
   
   close(fd);
   return 0;

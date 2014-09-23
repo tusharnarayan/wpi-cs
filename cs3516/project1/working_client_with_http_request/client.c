@@ -17,8 +17,6 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <string.h>
-#include <netdb.h>
-#include <arpa/inet.h>
 
 #define BUFFER_SIZE 2000
 
@@ -34,7 +32,6 @@ main(int argc, char *argv[]){
   char *server_url;
   int port_number;
   char *filename;
-  int bytes_read;
   
   if (argc < 4) {
     printf( "The program expects three arguments\n" );
@@ -45,40 +42,6 @@ main(int argc, char *argv[]){
   server_url = argv[1];
   port_number = atoi(argv[2]);
   filename = argv[3];
-
-  char            *ptr, **pptr;
-  char            str[INET6_ADDRSTRLEN];
-  struct hostent  *hptr;
-  char            IPAddress[100];
-
-
-  ptr = *++argv;       // Get the argument after the program name
-  if ( (hptr = gethostbyname(ptr)) == NULL) {
-    printf("gethostbyname error for host: %s: %s\n",
-	   ptr, hstrerror(h_errno));
-    exit(0);
-  }
-  printf("official hostname: %s\n", hptr->h_name);
-
-  // Are there other names for this site?
-  for (pptr = hptr->h_aliases; *pptr != NULL; pptr++) {
-    printf("    alias: %s\n", *pptr);
-  }
-  pptr = hptr->h_addr_list;   // Assumes address type is AF_INET
-  for ( ; *pptr != NULL; pptr++) {
-    strcpy( IPAddress,  inet_ntop(hptr->h_addrtype, 
-				  *pptr, str, sizeof(str)));
-    printf("\taddress: %s\n", IPAddress );
-
-    // For each of the IP addresses, find the host address
-    if ( (hptr = gethostbyaddr(*pptr, hptr->h_length,
-			       hptr->h_addrtype)) == NULL)
-      printf("\t(gethostbyaddr failed)\n");
-    else if (hptr->h_name != NULL)
-      printf("\tname = %s\n", hptr->h_name);
-    else
-      printf("\t(no hostname returned by gethostbyaddr)\n");
-  }             // End of for loop
   
   port = htons(port_number);  
 
@@ -91,18 +54,18 @@ main(int argc, char *argv[]){
   bzero(&sa, sizeof(sa));
   sa.sin_family = family;
   sa.sin_port = port; /* client & server see same port*/
-  sa.sin_addr = *((struct in_addr *)hptr -> h_addr); 
+  sa.sin_addr.s_addr = htonl(INADDR_ANY); /* the kernel assigns the IP addr*/
 
-  //  sa.sin_addr.s_addr = htonl(INADDR_ANY); /* the kernel assigns the IP addr*/
-  //  inet_aton(server_url, &sa.sin_addr);
-
+  inet_aton(server_url, &sa.sin_addr);
+  
   if (connect(fd, (struct sockaddr *) &sa, sizeof(sa))){
     printf("Error: the connect call failed!");
   }
+
+  //TODO design client request in the format that the server expects
   
   bzero(ip_output_buffer, sizeof(ip_output_buffer));
-  //  sprintf(ip_output_buffer, "GET /%s HTTP/1.1\nHost: %s:%d\nConnection: keep-alive", filename, server_url, port_number);
-  sprintf(ip_output_buffer, "GET /%s HTTP/1.0\r\nHost: %s:%d\r\n\r\n", filename, server_url, port_number);
+  sprintf(ip_output_buffer, "GET /%s HTTP/1.1\nHost: %s:%d\nConnection: keep-alive", filename, server_url, port_number);
 
   if (write(fd, ip_output_buffer, strlen(ip_output_buffer)) <= 0) {
     printf("Error in the send call!");
@@ -110,22 +73,15 @@ main(int argc, char *argv[]){
   
   bzero(ip_input_buffer, sizeof(ip_input_buffer));
   
-  while(1){
-    bytes_read = recv(fd, ip_input_buffer, sizeof(ip_input_buffer) - 2, 0);
-
-    if(bytes_read == -1){
+  while(1)
+    {
+      if ( recv( fd, ip_input_buffer, sizeof(ip_input_buffer) - 2, 0 ) <= 0 ){
+	//TODO check if the server closed the connection
 	printf("Error in the recv call!");
 	exit(2);
       }
-    else if(bytes_read ==0){
-      printf("Server closed the connection!\n");
-      break;
-    }
-    else{
       printf( "%s", ip_input_buffer );
     }
-    bzero(ip_input_buffer, sizeof(ip_input_buffer));
-  }
   
   close(fd);
   return 0;
