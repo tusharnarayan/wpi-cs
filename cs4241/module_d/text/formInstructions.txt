@@ -1,0 +1,9 @@
+This form is used to input data for the Broadway shows.
+
+The dropdown menu contains all the shows that are currently in the system.
+
+You can enter the week number (from 1 to 52, inclusive), and the revenue and count of seats sold for that week.
+
+On clicking the submit button, the data for that week for the selected show will be written to the database.
+
+Please note that if the data for that week previously exists, it will be overwritten!

@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+        head
+                title #{title}
+                link(rel='stylesheet', href='/css/style.css')
+                script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+                script(src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.js")
+                script(src='http://code.highcharts.com/highcharts.js')
+                script(src='http://code.highcharts.com/modules/exporting.js')
+                script(src='/js/reservation.js')
+        body
+                #first
+                        block headerdiv
+                div#container
+                        #third
+                                block seconddiv
+                        #fourth
+                                block footerdiv
+                #second
+                        block firstdiv

@@ -1,0 +1,615 @@
+/*
+  function that dynamically pulls the text content from the server
+*/
+
+//setting up the http requests
+var formHttp = new XMLHttpRequest();
+//callback function
+formHttp.onreadystatechange = function(){
+    //check if response received
+    if(formHttp.readyState == 4 && formHttp.status == 200){
+    var textResponse = formHttp.responseText;
+
+        document.getElementById("forminstructions").innerHTML = textResponse;
+}
+}
+var revenueHttp = new XMLHttpRequest();
+//callback function
+revenueHttp.onreadystatechange = function(){
+    //check if response received
+    if(revenueHttp.readyState == 4 && revenueHttp.status == 200){
+    var textResponse = revenueHttp.responseText;
+
+        document.getElementById("revenuebyweek").innerHTML = textResponse;
+}
+}
+var ticketHttp = new XMLHttpRequest();
+//callback function
+ticketHttp.onreadystatechange = function(){
+    //check if response received
+    if(ticketHttp.readyState == 4 && ticketHttp.status == 200){
+    var textResponse = ticketHttp.responseText;
+
+        document.getElementById("ticketssoldbyweek").innerHTML = textResponse;
+}
+}
+
+function getTextFiles(filename){
+    if(filename == "forminstructions")
+    {
+        formHttp.open("get", "/textfiles/" + filename, true);
+        formHttp.send();
+    }
+    else if(filename == "revenuebyweek")
+    {
+        revenueHttp.open("get", "/textfiles/" + filename, true);
+        revenueHttp.send();
+    }
+    else if(filename == "ticketssoldbyweek")
+    {
+        ticketHttp.open("get", "/textfiles/" + filename, true);
+        ticketHttp.send();
+    }
+    else
+    {
+        console.log("Oh no, we messed up the xmlhttp requests");
+    }
+}
+
+function getAllTables(){
+    //generate new request
+    var xmlhttp1 = new XMLHttpRequest();
+
+    //callback function
+    xmlhttp1.onreadystatechange = function(){
+        //check if response received
+        if(xmlhttp1.readyState == 4 && xmlhttp1.status == 200){
+            var tables = jQuery.parseJSON(xmlhttp1.responseText);
+	    $.each($.parseJSON(tables), function(key, value){
+		    $('#showSelector')
+		    	.append($('<option>', {value: value })
+				.text(value));
+		});
+	}
+    }
+
+    //open the request
+    xmlhttp1.open("GET", "/getAllTables", true);
+
+    //send the request
+    xmlhttp1.send();
+}
+
+function getWickedData(){
+    $("#wickedTable").empty();
+    $("#wickedTable").append('<caption>Data for Wicked</caption>');
+    $("#wickedTable").append('<tr>' +
+                          '<td>' + 'Week' + '</td>' +
+                          '<td>' + 'Revenue' + '</td>' +
+                          '<td>' + 'Seats Sold' + '</td>' +
+			   '</tr>');
+
+    var response = '';
+    $.ajax({ type: "GET",
+                url: "/getWickedData",
+                async: false,
+                success: function(text){
+                response = text;
+            }
+        });
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value){
+            $("#wickedTable")
+                .append('<tr>' +
+                          '<td>' + value.weekNum + '</td>' +
+                          '<td>' + value.revenue + '</td>' +
+                          '<td>' + value.seatCount + '</td>' +
+			'</tr>');
+        });
+}
+
+function getRevenueData(key) {
+    var response = '';
+    $.ajax({
+        type: "GET",
+        url: "/getRevenueData",
+        async: false,
+        success: function (text) {
+            response = text;
+        }
+    });
+    var wickedData = new Array();
+    var onceData = new Array();
+    var theLionKingData = new Array();
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value) {
+        if(value.showName=='Wicked'){
+            wickedData.push([Number(value.weekNum),Number(value.revenue)]);
+        } else if(value.showName=='Once'){
+            onceData.push([Number(value.weekNum),Number(value.revenue)]);
+        } else if(value.showName=='The Lion King'){
+            theLionKingData.push([Number(value.weekNum),Number(value.revenue)]);
+        }
+    });
+
+    var dataToPrint = 0;
+    if(key == 'Wicked')
+    {
+        dataToPrint = [{name: 'Wicked',
+                        data: wickedData}];
+    }
+    else if(key =='Once')
+    {
+        dataToPrint = [{name: 'Once',
+                        data: onceData}];
+    }
+    else if(key =='The Lion King')
+    {
+        dataToPrint = [
+                        {name: 'The Lion King',
+                        data: theLionKingData}];
+    }
+    else
+    {
+        dataToPrint = [{name: 'Wicked',
+                        data: wickedData},
+                        {name: 'Once',
+                        data: onceData},
+                        {name: 'The Lion King',
+                        data: theLionKingData}];
+    }
+
+    $("#revenueGraph")
+        .highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Revenue by Week'
+            },
+            yAxis: {
+                text: 'Revenue ($)'
+            },
+            xAxis: {
+                text: 'Week'
+            },
+            series: dataToPrint
+            /*[
+                {name: 'Wicked',
+                data: wickedData},
+                {name: 'Once',
+                data: onceData},
+                {name: 'The Lion King',
+                data: theLionKingData}]*/
+        });
+}
+
+function getTicketsData() {
+    var response = '';
+    $.ajax({
+        type: "GET",
+        url: "/getTicketsData",
+        async: false,
+        success: function (text) {
+            response = text;
+        }
+    });
+    var wickedData = new Array();
+    var onceData = new Array();
+    var theLionKingData = new Array();
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value) {
+        if(value.showName=='Wicked'){
+            wickedData.push([Number(value.weekNum),Number(value.seatCount)]);
+        } else if(value.showName=='Once'){
+            onceData.push([Number(value.weekNum),Number(value.seatCount)]);
+        } else if(value.showName=='The Lion King'){
+            theLionKingData.push([Number(value.weekNum),Number(value.seatCount)]);
+        }
+    });
+    $("#ticketsGraph")
+        .highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Tickets Sold by Week'
+            },
+            yAxis: {
+                text: 'Tickets'
+            },
+            xAxis: {
+                text: 'Week'
+            },
+            series: [
+                {name: 'Wicked',
+                    data: wickedData},
+                {name: 'Once',
+                    data: onceData},
+                {name: 'The Lion King',
+                    data: theLionKingData}]
+        });
+}
+
+function getPieChartData() {
+    var response = '';
+    $.ajax({
+        type: "GET",
+        url: "/getTicketsData",
+        async: false,
+        success: function (text) {
+            response = text;
+        }
+    });
+    var wickedTicketsSold = 0;
+    var onceTicketsSold = 0;
+    var theLionKingTicketsSold = 0;
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value) {
+        if(value.showName=='Wicked'){
+            wickedTicketsSold+=Number(value.seatCount);
+        } else if(value.showName=='Once'){
+            onceTicketsSold+=Number(value.seatCount);
+        } else if(value.showName=='The Lion King'){
+            theLionKingTicketsSold+=Number(value.seatCount);
+        }
+    });
+    $("#pieChart")
+        .highcharts({
+            title: {
+                text: 'Total Tickets Sold'
+            },
+            plotOptions: {
+              dataLabels: {
+                  enabled: true,
+                  format: '<br>{point.name}</b>: {point.percentage:.1f} %'
+              }
+            },
+            yAxis: {
+                text: 'Tickets'
+            },
+            xAxis: {
+                text: 'Week'
+            },
+            series: [
+                {
+                    type: 'pie',
+                    name: 'Tickets Sold',
+                    data: [
+                        ['The Lion King', theLionKingTicketsSold],
+                        ['Once', onceTicketsSold],
+                        ['Wicked', wickedTicketsSold]
+                    ]
+                }]
+        });
+}
+
+function getPieRevenueChart()
+{
+    var response = '';
+    $.ajax({
+        type: "GET",
+        url: "/getRevenueData",
+        async: false,
+        success: function (text) {
+            response = text;
+        }
+    });
+    var wickedData = 0;
+    var onceData = 0;
+    var theLionKingData = 0;
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value) {
+        if(value.showName=='Wicked')
+        {
+            wickedData+=Number(value.revenue);
+        } 
+        else if(value.showName=='Once')
+        {
+            onceData+=Number(value.revenue);
+        }
+        else if(value.showName=='The Lion King')
+        {
+            theLionKingData+=Number(value.revenue);
+        }
+    });
+    $("#pieChart")
+        .highcharts({
+            title: {
+                text: 'Total Revenue'
+            },
+            plotOptions: {
+              dataLabels: {
+                  enabled: true,
+                  format: '<br>{point.name}</b>: {point.percentage:.1f} %'
+              }
+            },
+            yAxis: {
+                text: 'Revenue'
+            },
+            xAxis: {
+                text: 'Week'
+            },
+            series: [
+                {
+                    type: 'pie',
+                    name: 'Revenue',
+                    data: [
+                        ['The Lion King', theLionKingData],
+                        ['Once', onceData],
+                        ['Wicked', wickedData]
+                    ]
+                }]
+        });
+}
+
+var pieFlag = 0;
+function toggleWrapper()
+{
+    if(pieFlag % 2 == 0)
+    {
+        getPieRevenueChart();
+    }
+    else
+    {
+        getPieChartData();
+    }
+    pieFlag++;
+}
+
+function filter()
+{
+    /* Get the appropriate filtered data */
+    getRevenueData(document.getElementById("filterselect").value);
+}
+
+function getOnceData(){
+    $("#onceTable").empty();
+    $("#onceTable").append('<caption>Data for Once</caption>');
+    $("#onceTable").append('<tr>' +
+                          '<td>' + 'Week' + '</td>' +
+                          '<td>' + 'Revenue' + '</td>' +
+                          '<td>' + 'Seats Sold' + '</td>' +
+			   '</tr>');
+
+    var response = '';
+    $.ajax({ type: "GET",
+                url: "/getOnceData",
+                async: false,
+                success: function(text){
+                response = text;
+            }
+        });
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value){
+            $("#onceTable")
+                .append('<tr>' +
+                          '<td>' + value.weekNum + '</td>' +
+                          '<td>' + value.revenue + '</td>' +
+                          '<td>' + value.seatCount + '</td>' +
+			'</tr>');
+        });
+}
+
+
+function getLionKingData(){
+    $("#lionKingTable").empty();
+    $("#lionKingTable").append('<caption>Data for The Lion King</caption>');
+    $("#lionKingTable").append('<tr>' +
+                          '<td>' + 'Week' + '</td>' +
+                          '<td>' + 'Revenue' + '</td>' +
+                          '<td>' + 'Seats Sold' + '</td>' +
+			   '</tr>');
+
+    var response = '';
+    $.ajax({ type: "GET",
+                url: "/getLionKingData",
+                async: false,
+                success: function(text){
+                response = text;
+            }
+        });
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value){
+            $("#lionKingTable")
+                .append('<tr>' +
+                          '<td>' + value.weekNum + '</td>' +
+                          '<td>' + value.revenue + '</td>' +
+                          '<td>' + value.seatCount + '</td>' +
+			'</tr>');
+        });
+}
+
+function getTestData(){
+    $("#testTable").empty();
+    $("#testTable").append('<caption>Test Data</caption>');
+    $("#testTable").append('<tr>' + 
+			  '<td>' + 'Week' + '</td>' +
+			  '<td>' + 'Revenue' + '</td>' +
+			  '<td>' + 'Seats Sold' + '</td>' +
+			  '</tr>');
+
+    var response = '';
+    $.ajax({ type: "GET",
+		url: "/getTestData",
+		async: false,
+		success: function(text){
+		response = text;
+	    }
+	});
+    var parsedResponse = jQuery.parseJSON(response);
+    jQuery.each(parsedResponse, function (i, value){
+	    $("#testTable")
+		.append('<tr>' + 
+			  '<td>' + value.weekNum + '</td>' +
+			  '<td>' + value.revenue + '</td>' +
+			  '<td>' + value.seatCount + '</td>' +
+			  '</tr>');
+	});
+}
+
+
+function addWickedContent(jsonStringToAdd){
+    $.ajax({
+            type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                url: "/addWickedInfo",
+		data: JSON.stringify(jsonStringToAdd),
+		dataType: "json",
+		success: function(){
+		alert("The data has been written successfully!");
+		$("input#week").val('');
+		$("input#revenue").val('');
+		$("input#seatCount").val('');
+		getWickedData();
+		//TODO should we update the plots as well?
+	    }
+	});    
+}
+
+function addOnceContent(jsonStringToAdd){
+    $.ajax({
+            type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                url: "/addOnceInfo",
+		data: JSON.stringify(jsonStringToAdd),
+		dataType: "json",
+		success: function(){
+		alert("The data has been written successfully!");
+		$("input#week").val('');
+		$("input#revenue").val('');
+		$("input#seatCount").val('');
+		getOnceData();
+		updateGraphs();
+	    }
+	});    
+}
+
+function addLionKingContent(jsonStringToAdd){
+    $.ajax({
+            type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                url: "/addLionKingInfo",
+		data: JSON.stringify(jsonStringToAdd),
+		dataType: "json",
+		success: function(){
+		alert("The data has been written successfully!");
+		$("input#week").val('');
+		$("input#revenue").val('');
+		$("input#seatCount").val('');
+		getLionKingData();
+		updateGraphs();
+	    }
+	});    
+}
+
+function addTestContent(jsonStringToAdd){
+    $.ajax({
+            type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                url: "/addTestInfo",
+                data: JSON.stringify(jsonStringToAdd),
+                dataType: "json",
+                success: function(){
+                alert("The data has been written successfully!");
+                $("input#week").val('');
+                $("input#revenue").val('');
+                $("input#seatCount").val('');
+		getTestData();
+		updateGraphs();
+            }
+        });
+}
+
+function addContent(){
+    var week = 0, revenue = 0, seatCount = 0;
+
+    if(isNaN(parseInt($("input#week").val()))){
+	alert("Week should be a number!");
+	return;
+    }
+
+    if(isNaN(parseInt($("input#revenue").val()))){
+        alert("Revenue should be a number!");
+	return;
+    }
+
+    if(isNaN(parseInt($("input#seatCount").val()))){
+        alert("Seat Count should be a number!");
+	return;
+    }
+
+    week = parseInt($("input#week").val());
+    revenue = parseInt($("input#revenue").val());
+    seatCount = parseInt($("input#seatCount").val());
+    
+    if(week < 1){
+	alert("Week numbers must be greater than 0!");
+	return;
+    }
+
+    if(week > 52){
+	alert("Week numbers must be smaller than 53!");
+	return;
+    }
+    
+    var jsonStringToAdd = {
+        week: week,
+        revenue: revenue,
+        seatCount: seatCount
+    };
+
+    // call appropriate function depending on dropdown selection
+    var show = $("select#showSelector").val();
+    console.log(show);
+    
+    if(show == "testTable"){
+	addTestContent(jsonStringToAdd);
+    }
+    else if(show == "Wicked"){
+	addWickedContent(jsonStringToAdd);
+    }
+    else if(show == "Once"){
+	addOnceContent(jsonStringToAdd);
+    }
+    else{
+	addLionKingContent(jsonStringToAdd);
+    }
+}
+
+function updateGraphs(){
+    getRevenueData('All');
+    getTicketsData();
+    if(pieFlag % 2 == 0){
+        getPieRevenueChart();
+    }
+    else{
+        getPieChartData();
+    }
+}
+
+function start(){
+    var formSubmitButton = document.getElementById("formEntry");
+    formSubmitButton.addEventListener("click", addContent, false);
+    document.getElementById("piechartbutton").addEventListener("click", toggleWrapper, false);
+    document.getElementById("filterselect").addEventListener("change", filter, false);
+
+    getAllTables();
+    getTextFiles("forminstructions");
+    getTextFiles("revenuebyweek");
+    getTextFiles("ticketssoldbyweek");
+
+    getWickedData();
+    getOnceData();
+    getLionKingData();
+    getTestData();
+    getRevenueData('All');
+    getTicketsData();
+    getPieChartData();
+
+    /*Set up buttons with their listeners to do things here*/
+    /* change content, tester button */	
+}
+
+/*call start function once page is fully loaded */
+window.addEventListener("load", start, false);

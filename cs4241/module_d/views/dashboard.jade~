@@ -1,0 +1,41 @@
+B0;136;0cextend layout
+block headerdiv
+    h1 Broadway Musicals!
+    h3 By - Eric Guleksen, Kristen Brann, and Tushar Narayan
+    br
+    div#forminstructions
+    form#dataentryform
+        label(for='showSelector') Shows:
+            select#showSelector
+        label(for='week') Week Number
+            input(id='week',type='text',value='',placeholder='4',name='week')
+        label(for='revenue') Revenue Made
+            input(id='revenue',type='text',value='',placeholder='45892',name='revenue')
+        label(for='seatCount') Seats Sold
+            input(id='seatCount',type='text',value='',placeholder='267',name='seatCount')
+    input(id='formEntry',type='submit',value='Submit')
+    br
+    br
+    div#tables
+        h4#dataTablesHeader Data for all shows in system:
+        table#wickedTable
+        table#onceTable
+        table#lionKingTable
+        table#testTable
+block firstdiv
+    div#revenueGraph
+    label(for='filterselect') Filter by show:
+        select#filterselect
+            option(value="All") All
+            option(value="The Lion King") Lion King
+            option(value="Once") Once
+            option(value="Wicked") Wicked
+    div#revenuebyweek
+block seconddiv
+    div#pieChart
+    button#piechartbutton Toggle Revenue/Tickets
+    img#simba(src='/img/simba.jpg')
+block footerdiv
+    div#ticketsGraph
+    div#ticketssoldbyweek
+

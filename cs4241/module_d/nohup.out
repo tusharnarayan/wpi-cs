@@ -1,0 +1,141 @@
+Client connected
+Client connected
+[0mGET /dashboard.html [36m304 [0m154.837 ms - -[0m
+[0mGET /css/style.css [36m304 [0m7.175 ms - -[0m
+[0mGET /js/script.js [36m304 [0m4.998 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m6.298 ms - -[0m
+Result: { Tables_in_epguleksen_db: 'Once' }
+Result: { Tables_in_epguleksen_db: 'TheLionKing' }
+Result: { Tables_in_epguleksen_db: 'Wicked' }
+Result: { Tables_in_epguleksen_db: 'testTable' }
+Finished successfully
+Done with all results
+[0mGET /getAllTables [36m304 [0m4.637 ms - -[0m
+/var/www/html/epguleksen/text/formInstructions.txt
+[0mGET /textfiles/formInstructions [36m304 [0m7.722 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getWickedData [36m304 [0m2.049 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getOnceData [36m304 [0m1.882 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getLionKingData [36m304 [0m2.482 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTestData [36m304 [0m1.498 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m3.029 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m2.063 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m3.103 ms - -[0m
+[0mGET /css/style.css [36m304 [0m1.401 ms - -[0m
+Done with all results
+[0mPOST /addTestInfo [32m200 [0m29.110 ms - 44[0m
+Finished successfully
+Done with all results
+[0mGET /getTestData [32m200 [0m1.775 ms - 318[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m40.486 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.741 ms - -[0m
+[0mGET /js/script.js [32m200 [0m2.910 ms - 14911[0m
+[0mGET /js/jquery.js [36m304 [0m0.424 ms - -[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m17.748 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.493 ms - -[0m
+[0mGET /js/script.js [36m304 [0m0.392 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m0.408 ms - -[0m
+[0mGET /dashboard.html [32m200 [0m40.548 ms - 1556[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m16.357 ms - -[0m
+[0mGET /js/script.js [36m304 [0m0.779 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.674 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m0.826 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m2.276 ms - -[0m
+[0mGET /css/style.css [36m304 [0m1.252 ms - -[0m
+[0mGET /js/script.js [32m200 [0m1.747 ms - 14911[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m16.656 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.796 ms - -[0m
+[0mGET /js/script.js [36m304 [0m0.408 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m0.440 ms - -[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m13.337 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m0.971 ms - -[0m
+[0mGET /css/style.css [36m304 [0m1.103 ms - -[0m
+[0mGET /js/script.js [36m304 [0m1.091 ms - -[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m12.074 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.996 ms - -[0m
+[0mGET /js/script.js [36m304 [0m1.167 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m0.556 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.455 ms - -[0m
+Warning: Unexpected block "content"  on line 3 of /var/www/html/epguleksen/views/index.jade. This block is never used. This warning will be an error in v2.0.0
+[0mGET / [36m304 [0m12.840 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.469 ms - -[0m
+[0mGET /js/script.js [32m200 [0m0.817 ms - 14912[0m
+[0mGET /js/jquery.js [36m304 [0m0.422 ms - -[0m
+[0mGET /dashboard.html [36m304 [0m43.887 ms - -[0m
+[0mGET /css/style.css [36m304 [0m1.233 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m1.715 ms - -[0m
+[0mGET /js/script.js [32m200 [0m2.631 ms - 14912[0m
+Client connected
+[0mGET /dashboard.html [36m304 [0m172.368 ms - -[0m
+[0mGET /js/script.js [36m304 [0m7.349 ms - -[0m
+[0mGET /css/style.css [36m304 [0m4.826 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m6.808 ms - -[0m
+Result: { Tables_in_epguleksen_db: 'Once' }
+Result: { Tables_in_epguleksen_db: 'TheLionKing' }
+Result: { Tables_in_epguleksen_db: 'Wicked' }
+Result: { Tables_in_epguleksen_db: 'testTable' }
+Finished successfully
+Done with all results
+[0mGET /getAllTables [36m304 [0m4.823 ms - -[0m
+/var/www/html/epguleksen/text/forminstructions.txt
+[0mGET /textfiles/forminstructions [36m304 [0m7.911 ms - -[0m
+/var/www/html/epguleksen/text/revenuebyweek.txt
+[0mGET /textfiles/revenuebyweek [36m304 [0m7.579 ms - -[0m
+/var/www/html/epguleksen/text/ticketssoldbyweek.txt
+[0mGET /textfiles/ticketssoldbyweek [32m200 [0m19.394 ms - 144[0m
+Finished successfully
+Done with all results
+[0mGET /getWickedData [36m304 [0m2.387 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getOnceData [36m304 [0m2.526 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getLionKingData [36m304 [0m1.304 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTestData [36m304 [0m1.168 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m2.651 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m1.846 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m2.379 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m2.392 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m1.809 ms - -[0m
+Done with all results
+[0mPOST /addTestInfo [32m200 [0m23.810 ms - 38[0m
+Finished successfully
+Done with all results
+[0mGET /getTestData [32m200 [0m2.449 ms - 375[0m
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: Column count doesn't match value count at row 1

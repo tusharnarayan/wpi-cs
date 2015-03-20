@@ -1,0 +1,117 @@
+var express = require('express');
+var router = express.Router();
+
+/*
+  use the sql server side javascript
+ */
+var sqlObject = require('../js/sqlserver.js');
+
+/*
+  from https://github.com/expressjs/body-parser
+  middleware that can parse JSON
+ */
+var bodyParser = require('body-parser');
+
+/*
+  set up router to use the middleware JSON parser
+ */
+router.use(bodyParser.json());
+
+/*
+  require jade to generate dynamic HTML
+*/
+var jade = require('jade');
+
+/*
+  require fs to use the filesystem
+ */
+var fs = require('fs');
+
+/* GET home page. */
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+
+
+/* GET dashboard page */
+router.get('/dashboard.html', function(req, res) {
+   res.render('dashboard', { title: 'Broadway Musicals' });
+});
+
+
+/* GET HTML for textfiles */
+router.get('/textfiles/:fname', function(req, res) {
+  //generate directory name
+  var dir = __dirname.split("/").slice(1,-1).join("/");
+
+  //generate template path
+  var templatePath = "/" + dir + "/views/textfiles.jade";
+
+  //generate text path
+  var filePath = "/" + dir + "/text/" + req.param("fname") + ".txt";
+
+  console.log(filePath);
+
+  var fileContent;
+
+  fs.readFile(filePath, function read(err, data) {
+	  if (err) throw err;
+	  fileContent = data;
+      });
+
+  //compile the HTML on the fly
+  fs.readFile(templatePath, 'utf8', function (err, data) {
+	  if(err) throw err;
+	  var fn = jade.compile(data);
+	  var html = fn({content:fileContent});
+	  res.send(html);
+      });
+
+});
+
+/* POST data to DB for the Wicked show table */
+router.post('/addWickedInfo', function(req, res) {
+	sqlObject.addWickedInfo(req, res);
+    });
+
+/* POST data to DB for the Once show table */
+router.post('/addOnceInfo', function(req, res) {
+	sqlObject.addOnceInfo(req, res);
+    });
+
+/* POST data to DB for The Lion King show table */
+router.post('/addLionKingInfo', function(req, res) {
+	sqlObject.addLionKingInfo(req, res);
+    });
+
+/* GET data from DB - get all table names */
+router.get('/getAllTables', function (req, res) {
+	sqlObject.showAllTables(req, res);
+    });
+
+/* GET data from DB - get all data for the show Wicked */
+router.get('/getWickedData', function (req, res) {
+        sqlObject.getWickedData(req, res);
+    });
+
+/* GET data from DB - get all data for the show Once */
+router.get('/getOnceData', function (req, res) {
+        sqlObject.getOnceData(req, res);
+    });
+
+/* GET data from DB - get all data for the show The Lion King */
+router.get('/getLionKingData', function (req, res) {
+        sqlObject.getLionKingData(req, res);
+    });
+
+/* GET data from DB - get revenue data for all shows in system */
+router.get('/getRevenueData', function (req, res) {
+        sqlObject.getRevenueData(req, res);
+    });
+
+/* GET data from DB - get tickets sold data for all shows in system */
+router.get('/getTicketsData', function (req, res) {
+        sqlObject.getTicketsData(req, res);
+    });
+
+module.exports = router;

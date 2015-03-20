@@ -1,0 +1,39 @@
+extend layout
+block headerdiv
+    h1#pageHeader VOX Ticket Reservations!
+    h3 By - Eric Guleksen, Kristen Brann, Laurentiu Pavel, and Tushar Narayan
+    br
+block seconddiv
+    h3 Reserve Tickets
+    div#reservationInstructions
+    form#reservation
+        label(for='showname') Select a Show:
+            select#showname
+        br
+        br
+        label(for='firstname') First Name:
+            input(id='firstname', type='text', value='', placeholder='John', name='firstname')
+        br
+        br
+        label(for='lastname') Last Name:
+            input(id='lastname', type='text', value='', placeholder='Doe', name='lastname')
+        br
+        br
+        label(for='showtime') Showtime:
+            select#showtime
+        br
+        br
+        label(for='numTickets') Number of Tickets:
+            input(id='numTickets', type='text', value='', placeholder='1', name='numTickets')
+        br
+        br
+        label(for='email') Email:
+            input(id='email', type='text', value='', placeholder='jdoe@wpi.edu', name='email')
+    br
+    input(id='formEntry', type='submit', value='Submit')
+block footerdiv
+    h3#showTitle
+    div#showinfodiv
+    div#showposter
+block firstdiv
+    div#tickets

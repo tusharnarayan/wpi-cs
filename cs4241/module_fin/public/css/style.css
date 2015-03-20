@@ -1,0 +1,81 @@
+/* define a font style for all body text */
+body {
+    font-family: "Calibri", Courier, "sans-serif";
+    }
+
+/* define how to display all unvisited links */
+a:link {
+    text-decoration: none;
+    color:#919191;
+    }
+/* define how to display all visited links */
+a:visited {
+    text-decoration: none;
+    color:#919191;
+    }
+/* define how to display all links when the link is hovered over */
+a:hover {
+    text-decoration: underline;
+    color:#c7c7c7;
+    }
+/* define how to display all links when the link is being clicked */
+a:active {
+    text-decoration: underline;
+    color:#c7c7c7;
+    }
+
+/* define how to display the page header */
+h1#pageHeader {
+    }
+
+/* define how to display the div containing the data for all shows */
+div#tables {
+    height: 230px;
+    overflow: auto;
+    padding: 5px;
+    border: 1px solid black;
+    }
+
+/* general styling for tables */
+table {
+    float: left;
+    margin-left: 80px;
+    }
+
+/* general styling for tables and table data elements */
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+
+div#first,div#second,div#container{
+    width:100%;
+    margin: 0 auto;
+    margin-bottom:10px;
+}
+div#first{
+    text-align: center;
+}
+
+div#container {
+    height:350px;
+}
+div#third{
+    width:30%;
+    min-width:300px;
+    float:left;
+    height:100%;
+}
+div#fourth{
+    height:100%;
+}
+
+div#showinfodiv {
+    float: left;
+    width: 31%;
+}
+
+div#showposter{
+    width: 35%;
+    float: right;
+}

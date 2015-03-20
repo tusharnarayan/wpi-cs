@@ -1,0 +1,262 @@
+//variable for XML request
+var infoHttp = new XMLHttpRequest();
+
+// create image constructor
+var createImage = function(src, title) {
+    var img   = new Image();
+    img.src   = src;
+    img.alt   = title;
+    img.title = title;
+    img.height = 300;
+    img.width = 300;
+    return img;
+};
+
+// set the images to be rendered                                                                                                                                          
+var images = [
+              createImage("/img/NextToNormal.png", "Next to Normal"),
+              createImage("/img/AvenueQ.jpg", "Avenue Q"),
+              createImage("/img/BackwardsBroadway.jpg", "Backwards Badway")
+              ];
+
+// set the text files to be used
+var infoFiles = [
+		 "nextToNormal",
+		 "avenueQInfo",
+		 "backwardsBroadway",
+		 ];
+
+
+// add listeners for all buttons
+function addListeners() {
+    $("#formEntry").click(reserveTicket);
+    $('#showname').change(populateShowtimes);
+    $('#showname').change(changeImage);
+    $('#showname').change(changeShowInfo);
+}
+
+// start function to be called as soon as page is loaded
+function start() {
+    getShowText("nextToNormal");
+    populateShows();
+    getTicketsData();
+    $("#showposter").append(images[0]);
+    $("#fourth").css("margin-left",$("#third").width());
+}
+
+// changes the image rendered
+function changeImage() {
+    $("#showposter").empty();
+    var index = $('#showname option:selected').val();
+    console.log("index:" + index);
+    $("#showposter").append(images[index]);
+}
+
+// populate the select menu with shows
+function populateShows() {
+    var response = '';
+    // now make an ajax request
+    $.ajax({    type: "GET",
+                url: "/shows",
+                async: false,
+                success: function(text) {
+		response = text;
+	    }
+        });
+    // transform the response into an object from json
+    var obj = jQuery.parseJSON(response);
+    console.log(obj);
+    // append every row to the table                                               
+
+    // prevStr used to handle different dates and not show multiple names
+    var prevStr = "";
+    var counter = 0;
+    $.each(obj, function(val, value){
+	    // for different name, append it
+	    if(prevStr != value.name)  {
+		$("#showname")
+		    .append($('<option></option>').val(counter).html(value.name)
+			    );
+		prevStr = value.name;
+		counter = counter + 1;
+	    }
+	});
+    // dynamically update showtimes
+    populateShowtimes();
+}
+
+// populate showtimes in the select menu
+function populateShowtimes() {
+    // show dates and times based on showname
+    var showName = $('#showname option:selected').text();
+    if(showName == "") {
+	return;
+    }
+    // clear it first
+    $('#showtime').empty();
+    var response = '';
+    // now ask for the new values and append them
+    $.ajax({    type: "GET",
+		url: "/showtimes/" + showName,
+		async: false,
+		success: function(text) {
+		response = text;
+	    }
+	});
+    var obj = jQuery.parseJSON(response);
+    $.each(obj, function(val, value){
+             $("#showtime")
+                .append($('<option></option>').val(val).html(value.performanceDate)
+                        );
+        });
+}
+
+// reserve Ticket contains the main intelligence of the function
+function reserveTicket() {
+    // get the names
+    var firstNameStr = $('#firstname').val();
+    var lastNameStr  = $('#lastname').val();
+
+    // make some validations
+    if(isNaN(parseInt($("input#numTickets").val()))){
+	alert("number of tickets should be a number!");
+	return;
+    }
+    
+    var numTickets = parseInt($("input#numTickets").val());
+    if(numTickets < 1) {
+	alert("can't reserve less than 1 ticket");
+	return;
+    }
+
+    if(firstNameStr == "" || lastNameStr == "") {
+	alert("name cannot be empty");
+	return;
+    }
+    
+    if($("input#email").val() == "") {
+	alert("email cannot be empty");
+	return;
+    }
+
+    // create json
+    var jsonStr = {
+	firstName: firstNameStr,
+	lastName:  lastNameStr,
+	numSeats: $('#numTickets').val(),
+	name: $('#showname option:selected').text(),
+	email: $('#email').val(),
+	performanceDate: $('#showtime option:selected').text()
+    }
+    
+    // stringify the json
+    var jsonStrSend = JSON.stringify(jsonStr);
+
+    // now send it to the db
+    $.ajax({   type: "POST",
+		contentType: 'application/json; charset=UTF-8',
+                url: "/addReservation",
+                async: false,
+		data: jsonStrSend,
+		dataType: "json",
+		success: function() {
+		   alert("The reservation request has been sent!");
+		   //clear previously entered values
+		   $("input#firstname").val('');
+		   $("input#lastname").val('');
+		   $("input#numTickets").val('');
+		   $("input#email").val('');
+	    },
+		error: function() {
+		alert("Data could not be uploaded");
+	    }
+	});
+    // update the charts
+    getTicketsData();
+}
+
+// call this right at the beginning
+$(document).ready(function() {
+	addListeners();
+	start();
+    });
+
+/*
+ * get ticket data from DB and graph it
+ */
+function getTicketsData() {
+    var response = '';
+    $.ajax({
+        type: "GET",
+        url: "/getChartData",
+        async: false,
+        success: function (text) {
+            response = text;
+        }
+    });
+    //store ticket data in arrays so we can construct a line chart
+    var n2ndata = new Array();
+    var avqdata = new Array();
+    var backwardsdata = new Array();
+    var parsedResponse = jQuery.parseJSON(response);
+    console.log(parsedResponse);
+    jQuery.each(parsedResponse, function (i, value) {
+        if(value.name=='Next To Normal'){
+            n2ndata.push(Number(value.remainingSeats));
+        } else if(value.name=='Avenue Q'){
+            avqdata.push(Number(value.remainingSeats));
+        } else if(value.name=='Backwards Broadway'){
+            backwardsdata.push(Number(value.remainingSeats));
+        }
+    });
+    console.log(n2ndata);
+    //construct the chart
+    $("#tickets")
+        .highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Number of Tickets Remaining for Show'
+            },
+            yAxis: {
+                text: 'Tickets'
+            },
+            xAxis: {
+                text: 'Show'
+            },
+            series: [
+                {name: 'Next To Normal',
+                    data: n2ndata},
+                {name: 'Avenue Q',
+                    data: avqdata},
+                {name: 'Backwards Broadway',
+                    data: backwardsdata}]
+        });
+}
+
+//callback function
+infoHttp.onreadystatechange = function(){
+    //check if response received
+    if(infoHttp.readyState == 4 && infoHttp.status == 200){
+	var textResponse = infoHttp.responseText;
+
+        document.getElementById("showinfodiv").innerHTML = textResponse;
+    }
+}
+
+/*
+ * using callbacks, serve up the unformatted text files via parsed JADE fragments
+ * the files contain instructions for various parts of the page
+ */
+function getShowText(filename){
+    infoHttp.open("get", "/showInfo/" + filename, true);
+    infoHttp.send();
+}
+
+// change show information
+function changeShowInfo(){
+    $("#showinfodiv").empty();
+    var index = $('#showname option:selected').val();
+    getShowText(infoFiles[index]);
+}

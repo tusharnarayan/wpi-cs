@@ -1,0 +1,96 @@
+/* define a font style for all body text */
+body {
+    font-family: "Calibri", Courier, "sans-serif";
+    }
+
+/* define how to display all unvisited links */
+a:link {
+    text-decoration: none;
+    color:#919191;
+    }
+/* define how to display all visited links */
+a:visited {
+    text-decoration: none;
+    color:#919191;
+    }
+/* define how to display all links when the link is hovered over */
+a:hover {
+    text-decoration: underline;
+    color:#c7c7c7;
+    }
+/* define how to display all links when the link is being clicked */
+a:active {
+    text-decoration: underline;
+    color:#c7c7c7;
+    }
+
+/* define how to display the header div */
+div#header {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    width: 870px;
+    height: 570px;
+    padding: 5px;
+    }
+
+/* define how to display the first div after the header */
+div#first {
+    position: absolute;
+    top: 600px;
+    left: 20px;
+    width: 500px;
+    height: 500px;
+    padding: 5px;
+    float: left;
+    border: 1px solid black;
+    }
+
+
+/* define how to display the second div after the header */
+div#second {
+    position: absolute;
+    top: 600px;
+    left: 540px;
+    width: 350px;
+    height: 500px;
+    float: left;
+    padding: 5px;    border: 1px solid black;
+    }
+
+/* define how to display the footer div */
+div#footer {
+    position: absolute;
+    top: 1122px;
+    left: 20px;
+    width: 870px;
+    clear: both;
+    padding: 5px;
+    border: 1px solid black;
+    }
+
+div#tables {
+    height: 230px;
+    overflow: auto;
+    padding: 5px;
+    border: 1px solid black;
+    }
+
+h4#dataTablesHeader {
+    margin-left: 340px;
+    }
+
+table {
+    float: left;
+    margin-left: 20px;
+    }
+
+/* general styling for tables and table data elements */
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+
+button#piechartbutton {
+    margin-left: 95px;
+    }

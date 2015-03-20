@@ -1,0 +1,45 @@
+Client connected
+[0mGET /dashboard.html [36m304 [0m172.311 ms - -[0m
+[0mGET /css/style.css [36m304 [0m6.480 ms - -[0m
+[0mGET /js/script.js [36m304 [0m5.866 ms - -[0m
+[0mGET /js/jquery.js [36m304 [0m7.425 ms - -[0m
+[0mGET /img/simba.jpg [36m304 [0m0.689 ms - -[0m
+/var/www/html/epguleksen/text/forminstructions.txt
+/var/www/html/epguleksen/text/revenuebyweek.txt
+/var/www/html/epguleksen/text/ticketssoldbyweek.txt
+Result: { Tables_in_epguleksen_db: 'Once' }
+Result: { Tables_in_epguleksen_db: 'TheLionKing' }
+Result: { Tables_in_epguleksen_db: 'Wicked' }
+Finished successfully
+Done with all results
+[0mGET /getAllTables [36m304 [0m8.645 ms - -[0m
+[0mGET /textfiles/forminstructions [36m304 [0m14.616 ms - -[0m
+[0mGET /textfiles/revenuebyweek [32m200 [0m22.635 ms - 147[0m
+Finished successfully
+Done with all results
+[0mGET /getWickedData [36m304 [0m20.522 ms - -[0m
+[0mGET /textfiles/ticketssoldbyweek [36m304 [0m39.414 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getOnceData [36m304 [0m2.144 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getLionKingData [36m304 [0m1.416 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m2.699 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m1.776 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getTicketsData [36m304 [0m2.301 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m2.249 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m1.651 ms - -[0m
+Finished successfully
+Done with all results
+[0mGET /getRevenueData [36m304 [0m1.856 ms - -[0m

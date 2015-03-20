@@ -1,0 +1,28 @@
+extend layout
+block headerdiv
+	h1 This is a newsletter about Tushar Narayan.
+	img#profile(src='/img/profile_bw.jpg')
+	p
+		include ../text/header1.txt
+		br
+		br
+		include ../text/header2.txt
+	#scroll_snippets
+		br
+		| I like coffee.
+		br
+	br
+	br
+	br
+	br
+	br
+	h1 Here are some images and facts about me
+block firstdiv
+	#images
+		#image_slideshow
+		form(name='radioForm')#image_selector
+block seconddiv
+	textarea.imageInfo#info1(readonly=true)
+	textarea.imageInfo#info2(readonly=true)
+	textarea.imageInfo#info3(readonly=true)
+block footerdiv

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+	<!-- HEAD -->
+	<head lang="en">
+	<!--
+	WPI CS 4241 Webware B 2014
+	
+	Tushar Narayan
+	tnarayan@wpi.edu
+	
+	Assignment: Module #P
+	
+	FLOW OF THIS DOCUMENT:
+	This document encapsulates the webpage that is displayed.
+	
+	It first defines all the styles used in the document.
+	It then defines all the Javascript that is used for dynamic interaction with the webpage.
+	Finally, it defines the HTML that is used to render the various parts of the actual webpage.
+	-->
+		<meta charset="UTF-8" />
+		
+		<!--Custom Favicon-->
+			<!-- for mozilla/firefox -->
+			<link rel="icon" href="img/favicon.ico" type="image/gif"/>
+			<!-- for IE -->
+			<link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon"/>
+		<!--End Custom Favicon-->
+		
+		<title>Tushar Narayan</title>
+		
+		<!-- Style -->
+		<style type="text/css">
+			/* define a font style for all body text */
+			body {
+				font-family: "Calibri", Courier, "sans-serif";
+			}
+			
+			/* define how to display all unvisited links */
+			a:link {
+				text-decoration: none;
+				color:#919191;
+			}
+			/* define how to display all visited links */
+			a:visited {
+				text-decoration: none;
+				color:#919191;
+			}
+			/* define how to display all links when the link is hovered over */
+			a:hover {
+				text-decoration: underline;
+				color:#c7c7c7;
+			}
+			/* define how to display all links when the link is being clicked */
+			a:active {
+				text-decoration: underline;
+				color:#c7c7c7;
+			}
+			
+			/* define how to display the header div */
+			div#header {
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				width: 1000px;
+				height: 250px;
+				padding: 5px;
+			}
+			
+			/* define how to display the first div after the header */
+			div#first {
+				position: absolute;
+				top: 300px;
+				left: 20px;
+				width: 485px;
+				height: 250px;
+				padding: 5px;
+				float: left;
+			}
+			
+			/* define how to display the second div after the header */
+			div#second {
+				position: absolute;
+				top: 300px;
+				left: 535px;
+				width: 485px;
+				height: 250px;
+				float: left;
+				padding: 5px;
+			}
+			
+			/* define how to display the footer div */
+			div#footer {
+				position: absolute;
+				top: 580px;
+				left: 20px;
+				width: 1000px;
+				clear: both;
+				padding: 5px;
+			}
+			
+			/* define how to display the profile image */
+			img#profile {
+				float: right;
+				height: 240px;
+				margin-right: 100px;
+			}
+			
+			/* define how to display the div that contains the image slideshow */
+			div#image_slideshow {
+				float: left;
+			}
+			
+			/* define how to display the button used to display the next image
+			in the slideshow */
+			input#cycleImages {
+				margin-top: 100px;
+				margin-left: 20px;
+			}
+			
+			/* define how to display the textarea that shows different facts */
+			textarea#about_me {
+				width: 400px;
+				height: 100px;
+				border: 3px solid #ccc;
+				max-width: 450px;
+				max-height: 130px;
+				padding: 5px;
+			}
+			
+			/* define how to display the pulldown menu to select which set of likes
+			to display */
+			select#cycleLikes {
+				margin-left: 400px;
+			}
+			
+			/* define how to display the table containing the likes */
+			table#likes {
+				width: 950px;
+				margin-left: 20px;
+			}
+			
+			/* general styling for tables and table data elements */
+			table, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			
+		</style>
+		<!-- End Style -->
+		
+		<!-- Javascript -->
+		<script type="application/javascript">
+			/*array with URLs to images that are displayed on the page*/
+			var images = [
+					"img/stonehenge.jpg",
+					"img/london_eye.jpg",
+					"img/eiffel_tower.jpg",
+					"img/great_barrier_reef.jpg"
+			];
+			
+			/*array with strings that are facts about me; displayed on page*/
+			var about = [
+				"I'm currently a senior majoring in Computer Science at Worcester Polytechnic Institute in Massachusetts.",
+				"I will be working as a Product Quality Engineer at Palantir Technologies starting June 2015.",
+				"I'm a Founding Father and president of the Beta Theta Pi Fraternity's WPI colony.",
+				"I went to Harvard University for Summer School in 2010, and graduated from high school in India in 2011.",
+				"I've lived in various parts of India, and in the Kingdom of Bahrain in the Middle East.",
+				"I'm currently in Worcester, Massachusetts."
+			];
+			
+			/*two dimensional array; contains various things I like (books, cuisines, programming languages)*/
+			var likes = [
+				["Harry Potter", "Lord of the Rings", "Lord of the flies", "Outliers", "Black Swan", "Jack West series", "The Saxon Chronicles", "Wars of the Roses", "The Clifton Chronicles"],
+				["Thai", "Chinese", "Indian", "Italian", "Mexican", "Mid-Eastern", "Malaysian", "Singaporean", "Sri Lankan"],
+				["C", "Java", "Racket", "HTML", "CSS", "Javascript", "Lua", "C++", "Ruby"]
+			];
+			
+			/*global to track which image is currently displayed
+			start by displaying the first image by default*/
+			var currentlyDisplayedImageIndex = 0;
+			
+			/*globals for setting width and height of images displayed*/
+			var imageWidth = 400;
+			var imageHeight = 180;
+			
+			/*
+			function that is used to change the page style
+			only called when the user changes their style selection
+			in the drop-down menu
+			depending on the selection made by user
+			styles can either be absolute or flow
+			checks selection made by user, and applies
+			styles accordingly to the four main div elements
+			*/
+			function changePageStyle() {
+				var selector = document.getElementById("changePageStyle");
+				var styleIndex = selector.selectedIndex;
+				
+				if(styleIndex == 0){
+					//absolute
+					document.getElementById("header").style.position="absolute";
+					document.getElementById("header").style.marginTop="0px";
+					document.getElementById("header").style.marginLeft="0px";
+					document.getElementById("header").style.top="20px";
+					document.getElementById("header").style.left="20px";
+					
+					document.getElementById("first").style.position="absolute";
+					document.getElementById("first").style.marginTop="0px";
+					document.getElementById("first").style.marginLeft="0px";
+					document.getElementById("first").style.top="300px";
+					document.getElementById("first").style.left="20px";
+					
+					document.getElementById("second").style.position="absolute";
+					document.getElementById("second").style.marginTop="0px";
+					document.getElementById("second").style.marginLeft="0px";
+					document.getElementById("second").style.top="300px";
+					document.getElementById("second").style.left="535px";
+					
+					document.getElementById("footer").style.position="absolute";
+					document.getElementById("footer").style.marginTop="0px";
+					document.getElementById("footer").style.marginLeft="0px";
+					document.getElementById("footer").style.top="580px";
+					document.getElementById("footer").style.left="20px";
+				}
+				else {
+					//flow
+					document.getElementById("header").style.position="relative";
+					document.getElementById("header").style.top="0px";
+					document.getElementById("header").style.left="0px";
+					document.getElementById("header").style.marginTop="20px";
+					document.getElementById("header").style.marginLeft="20px";
+					
+					document.getElementById("first").style.position="relative";
+					document.getElementById("first").style.top="0px";
+					document.getElementById("first").style.left="0px";
+					document.getElementById("first").style.marginTop="30px";
+					document.getElementById("first").style.marginLeft="20px";
+					
+					document.getElementById("second").style.position="relative";
+					document.getElementById("second").style.top="0px";
+					document.getElementById("second").style.left="0px";
+					document.getElementById("second").style.marginTop="30px";
+					document.getElementById("second").style.marginLeft="20px";
+					
+					document.getElementById("footer").style.position="relative";
+					document.getElementById("footer").style.top="0px";
+					document.getElementById("footer").style.left="0px";
+					document.getElementById("footer").style.marginTop="280px";
+					document.getElementById("footer").style.marginLeft="20px";
+				}
+			}
+			
+			/*
+			function to ensure that images cycle when user clicks the next button
+			called each time the user clicks the button
+			increments the global that tracks which image is currently displayed
+			and then displays the next image
+			*/
+			function cycleImages(){				
+				currentlyDisplayedImageIndex = (currentlyDisplayedImageIndex == (images.length - 1))?
+					0 : (currentlyDisplayedImageIndex + 1);
+				var imageContainer = document.getElementById('image_slideshow');
+				imageContainer.innerHTML = "<img src = '" + images[currentlyDisplayedImageIndex] +
+				"' width='" + imageWidth + "' height='" + imageHeight + "'/>";
+			}
+			
+			/*
+			function to ensure that the table or grid of likes
+			cycles between different data depending on the selection
+			made by the user
+			only called when the user changes the selection in the 
+			drop-down menu
+			checks to see which option the user has selected
+			removes all current data in the table
+			then adds rows to the table with the data that corresponds
+			to the user's choice
+			*/
+			function cycleLikes(){
+				var selector = document.getElementById("cycleLikes");
+				var indexToDisplay = selector.selectedIndex;
+				
+				var tableBody = document.getElementsByTagName("tbody").item(0);
+				
+				while(tableBody.firstChild) {
+					tableBody.removeChild(tableBody.firstChild);
+				}
+								
+				for(var i = 0; i < likes[indexToDisplay].length; i += 3){
+					addRow(likes[indexToDisplay][i], likes[indexToDisplay][i + 1], likes[indexToDisplay][i + 2]);
+				}
+			}
+			
+			/*
+			function that adds a row to the table
+			the row contains the data provided to the function
+			expects data to be strings
+			creates a row with three columns, one piece of data
+			in each column
+			adds the row to the table body
+			*/
+			function addRow(firstColData, secondColData, thirdColData){
+				var tableBody = document.getElementsByTagName("tbody").item(0);
+				var tableRow = document.createElement("tr");
+				var tableCellCol1 = document.createElement("td");
+				var tableCellCol2 = document.createElement("td");
+				var tableCellCol3 = document.createElement("td");
+				var cellText1 = document.createTextNode(firstColData);
+				var cellText2 = document.createTextNode(secondColData);
+				var cellText3 = document.createTextNode(thirdColData);
+				
+				tableCellCol1.appendChild(cellText1);
+				tableCellCol2.appendChild(cellText2);
+				tableCellCol3.appendChild(cellText3);
+				
+				tableRow.appendChild(tableCellCol1);
+				tableRow.appendChild(tableCellCol2);
+				tableRow.appendChild(tableCellCol3);
+				
+				tableBody.appendChild(tableRow);				
+			}
+			
+			/*
+			function that displays the fact about my work in the textbox
+			called when the user clicks the "Work" button
+			*/
+			function displayWork(){
+				var aboutContainer = document.getElementById('about_me');
+				aboutContainer.innerHTML = about[1];
+			}
+			
+			/*
+			function that displays the fact about my location in the textbox
+			called when the user clicks the "Location" button
+			*/
+			function displayCurrentLocation(){
+				var aboutContainer = document.getElementById('about_me');
+				aboutContainer.innerHTML = about[5];
+			}
+			
+			/*
+			function that displays a random fact about me in the textbox
+			called when the user clicks the "Random Fact!" button
+			generates a random number, and then uses that as an index
+			to the array of facts (ensures that the number generated is 
+			between 0 and (array length - 1)
+			
+			Note - random fact can include fact about work and location
+			*/
+			function displayRandomFact(){
+				var aboutContainer = document.getElementById('about_me');
+				var randomIndex = Math.floor(Math.random() * about.length);
+				aboutContainer.innerHTML = about[randomIndex];
+			}
+			
+			/*
+			function that is called once the page is fully loaded
+			does initial ("default") page setup
+			
+			binds buttons and menus to event handlers
+			*/
+			function start(){			
+				//load initial image
+				var imageContainer = document.getElementById('image_slideshow');
+				imageContainer.innerHTML = "<img src = '" + images[currentlyDisplayedImageIndex] +
+				"' width='" + imageWidth + "' height='" + imageHeight + "'/>";
+				
+				//load initial fact
+				var aboutContainer = document.getElementById('about_me');
+				aboutContainer.innerHTML = about[0];
+				
+				//load initial table
+				for(var i = 0; i < likes[0].length; i += 3){
+					addRow(likes[0][i], likes[0][i + 1], likes[0][i + 2]);
+				}
+				
+				//bind buttons and menus to event handlers
+				var changePageStyleMenu = document.getElementById("changePageStyle");
+				changePageStyleMenu.addEventListener("change", changePageStyle, false);
+				var cycleImagesButton = document.getElementById("cycleImages");
+				cycleImagesButton.addEventListener("click", cycleImages, false);
+				var displayWorkButton = document.getElementById("displayWork");
+				displayWorkButton.addEventListener("click", displayWork, false);
+				var displayCurrentLocationButton = document.getElementById("displayCurrentLocation");
+				displayCurrentLocationButton.addEventListener("click", displayCurrentLocation, false);
+				var displayRandomFactButton = document.getElementById("displayRandomFact");
+				displayRandomFactButton.addEventListener("click", displayRandomFact, false);
+				var cycleLikesMenu = document.getElementById("cycleLikes");
+				cycleLikesMenu.addEventListener("change", cycleLikes, false);
+			}
+			
+			/*call start function once page is fully loaded */
+			window.addEventListener("load", start, false);
+		</script>
+		<!-- End Javascript -->
+		
+	</head>
+	<!-- END HEAD -->
+	
+	<!-- BODY -->
+	<body>
+	
+		<!-- HEADER DIV -->
+		<div id="header">
+			<!-- A TAG - make image a link -->
+			<a href="http://tusharnarayan.com/">
+				<!-- IMAGE -->
+				<img id="profile" alt="Tushar Narayan" src="img/profile_bw.jpg" />
+				<!-- END IMAGE -->
+			</a>
+			<!-- END A TAG -->
+			
+			<!-- HEADER - size 1 -->
+			<h1>This is a page about Tushar Narayan.</h1>
+			<!-- END HEADER -->
+			
+			<!-- PARAGRAPH -->
+			<p>
+				 I like coffee. <!-- A --><a href="http://tusharnarayan.com/availability.html">Let's meet up.</a><!-- END A -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				I tweet infrequently. <!-- A --><a href="https://twitter.com/tusharnarayan">Here's what I'm thinking.</a><!-- END A -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				I prefer X-Pro II on Instagram. <!-- A --><a href="http://instagram.com/tusharnarayan">Here's what I'm seeing.</a><!-- END A -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				I read a lot. <!-- A --><a href="http://www.linkedin.com/in/tusharnarayan/">Here's what I've done.</a><!-- END A -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				You can <!-- A --><a href="mailto:tusharnarayan@gmail.com">email me.</a><!-- END A --> Inbox zero is probably overrated.
+				<!-- BREAK --><br /><!-- END BREAK -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				<!-- BREAK --><br /><!-- END BREAK -->
+				
+				You can toggle the page layout style here:
+				
+				<!-- SELECT - toggle page style -->
+				<select id="changePageStyle">
+					<!-- OPTION --><option>Absolute</option><!-- END OPTION -->
+					<!-- OPTION --><option>Flow</option><!-- END OPTION -->
+				</select>
+				<!-- END SELECT -->
+				
+			</p>
+			<!-- END PARAGRAPH -->
+		</div>
+		<!-- END HEADER DIV -->
+		
+		<!-- FIRST DIV -->
+		<div id="first">
+			<!-- PARAGRAPH -->
+			<p>Here are some places I want to visit!</p>
+			<!-- END PARAGRAPH -->
+			
+			<!-- IMAGE SLIDESHOW DIV - used to display images using Javascript -->
+			<div id="image_slideshow">
+			</div>
+			<!-- END IMAGE SLIDESHOW DIV -->
+			
+			<!-- INPUT CYCLE IMAGES BUTTON -->
+			<input type="button" id="cycleImages" value="next">
+			<!-- END INPUT CYCLE IMAGES BUTTON -->
+			
+		</div>
+		<!-- END FIRST DIV -->
+		
+		<!-- SECOND DIV -->
+		<div id="second">
+			<!-- PARAGRAPH -->
+			<p>Here are some facts about me!</p>
+			<!-- END PARAGRAPH -->
+			
+			<!-- TEXTAREA - used to display some facts about me -->
+			<textarea readonly id="about_me"></textarea>
+			<!-- END TEXTAREA -->
+			
+			<!-- BREAK --><br /><!-- END BREAK -->
+			<!-- BREAK --><br /><!-- END BREAK -->
+			
+			<!-- BUTTON - used to display a fact about work -->
+			<input type="button" id="displayWork" value="Work">
+			<!-- END BUTTON -->
+			
+			<!-- BUTTON - used to display a fact about location -->
+			<input type="button" id="displayCurrentLocation" value="Current Location">
+			<!-- END BUTTON -->
+			
+			<!-- BUTTON - used to display a random fact-->
+			<input type="button" id="displayRandomFact" value="Random Fact!">
+			<!-- END BUTTON -->
+			
+		</div>
+		<!-- END SECOND DIV -->
+		
+		<!-- BREAK --><br /><!-- END BREAK -->
+		<!-- BREAK --><br /><!-- END BREAK -->
+		
+		<!-- FOOTER DIV -->
+		<div id="footer">
+			<!-- PARAGRAPH -->
+			<p>I like...</p>
+			<!-- END PARAGRAPH -->
+			
+			<!-- SELECT - select likes to display -->
+			<select id="cycleLikes">
+				<!-- OPTION --><option>Books</option><!-- END OPTION -->
+				<!-- OPTION --><option>Cuisines</option><!-- END OPTION -->
+				<!-- OPTION --><option>Programming Languages</option><!-- END OPTION -->
+			</select>
+			<!-- END SELECT -->
+			
+			<!-- BREAK --><br /><!-- END BREAK -->
+			<!-- BREAK --><br /><!-- END BREAK -->
+			
+			<!-- TABLE - used to display likes using Javascript -->
+			<table id="likes">
+				<!-- TABLE BODY -->
+				<tbody>
+				</tbody>
+				<!-- END TABLE BODY -->
+			</table>
+			<!-- END TABLE -->
+			
+			<!-- BREAK --><br /><!-- END BREAK -->
+		</div>
+		<!-- END FOOTER DIV -->
+		
+	</body>
+	<!-- END BODY -->
+</html>
