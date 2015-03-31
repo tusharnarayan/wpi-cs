@@ -7,6 +7,7 @@ cs2223 Algorithms |
 cs2303 Systems Programming Concepts |
 cs3013 Operating Systems |
 cs3041 Human Computer Interaction |
+cs3043 Social Implications of Information Processing |
 cs3733 Software Engineering |
 cs3516 Computer Networks |
 cs4233 Object Oriented Analysis & Design |
